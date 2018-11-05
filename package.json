@@ -1,0 +1,22 @@
+{
+  "name": "devcloud",
+  "version": "1.0.0",
+  "description": "Plataforma web para gestión y codificación colaborativa en línea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saullainez/DevCloud.git"
+  },
+  "author": "Saul Lainez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saullainez/DevCloud/issues"
+  },
+  "homepage": "https://github.com/saullainez/DevCloud#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
