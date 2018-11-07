@@ -1,12 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DevCloud-Code Together!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #1C2331 !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!--Navegación principal-->
+    <header>
+        <!--Navbar-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <!--<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #081731 !important;">-->
+
+            <!--Logo-->
+            <a href="#" class="navbar-brand">
+                <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" alt="DevCloud-logo" height="30">
+            </a>
+
+            <!--Botón colapsable-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Contenido colapsable-->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!--Links-->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">Acerca de
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Planes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <!--Links-->
+
+                <!--Formulario de inicio de sesión-->
+                <div id="contenedor-formulario">
+                    <form id="formulario-login" class="form-inline my-2 my-lg-0 ml-auto">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Correo electrónico" aria-label="Correo electrónico">
+                        <input class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Contraseña">
+                        <button class="btn btn-primary my-2 my-sm-0">Iniciar Sesión</button>
+                    </form>
+                </div>
+                <div row>
+                    <div class="col-12">
+                        <span id="texto-registrarse">¿Todavía no tienes cuenta?</span>
+                    </div>
+                    <div class="col-12">
+                        <a href="#" id="text-registrarse">¡Regístrate!</a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <!--Navbar-->
+    </header>
+    <!--Navegación principal-->
+
+    <!--Carrusel-->
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicadores-->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicadores-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+
+            <!--Primer Slide-->
+            <div class="carousel-item active">
+                <div class="view" style="background-image: url('img/Slide1.png'); background-repeat: no-repeat; background-size: cover;">
+
+                    <!--Máscara-->
+                    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                        <!-- Contenido -->
+                        <div class="text-center white-text mx-5 wow fadeIn">
+                            <h1 class="mb-4 titulo-slide">
+                                <strong>DevCloud</strong>
+                            </h1>
+
+                            <p class="slogan-slide">
+                                <strong>Code Together!</strong>
+                            </p>
+
+                            <p class="mb-4 d-none d-md-block texto-slide">
+                                <strong>DevCloud te ayuda a gestionar y compartir tus proyectos web FrontEnd</strong>
+                            </p>
+
+                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Inicar
+                                sesión
+                                <i class="fa fa-sign-in ml-2"></i>
+                            </a>
+                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Registrarse
+                                <i class="fa fa-user-plus ml-2"></i>
+                            </a>
+                        </div>
+                        <!--/.Contenido-->
+
+                    </div>
+                    <!--/.Máscara-->
+
+                </div>
+            </div>
+            <!--/.Primer Slide-->
+
+            <!--Segundo Slide-->
+            <div class="carousel-item">
+                <div class="view" style="background-image: url('img/Slide2.png'); background-repeat: no-repeat; background-size: cover;">
+
+                    <!--Máscara-->
+                    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+                        <!-- Contenido -->
+                        <div class="text-center white-text mx-5 wow fadeIn">
+                            <h1 class="mb-4 titulo-slide">
+                                <strong>DevCloud</strong>
+                            </h1>
+
+                            <p class="slogan-slide">
+                                <strong>Code Together!</strong>
+                            </p>
+
+                            <p class="mb-4 d-none d-md-block texto-slide">
+                                <strong>Tenemos el plan ideal para tus necesidades</strong>
+                            </p>
+
+                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Ver
+                                planes
+                                <i class="fa fa-info ml-2"></i>
+                            </a>
+                        </div>
+                        <!--/.Contenido-->
+
+                    </div>
+                    <!--/.Máscara-->
+
+                </div>
+            </div>
+            <!--/.Segundo Slide-->
+
+            <!--Tercer Slide-->
+            <div class="carousel-item">
+                <div class="view" style="background-image: url('img/Slide3.png'); background-repeat: no-repeat; background-size: cover;">
+
+                    <!--Máscara-->
+                    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+                        <!-- Contenido -->
+                        <div class="text-center white-text mx-5 wow fadeIn">
+                            <h1 class="mb-4 titulo-slide">
+                                <strong>DevCloud</strong>
+                            </h1>
+
+                            <p class="slogan-slide">
+                                <strong>Code Together!</strong>
+                            </p>
+
+                            <p class="mb-4 d-none d-md-block texto-slide">
+                                <strong>¡Comparte código con tus amigos!</strong>
+                            </p>
+
+                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Saber más
+                                <i class="fa fa-info ml-2"></i>
+                            </a>
+                        </div>
+                        <!--/.Contenido-->
+
+                    </div>
+                    <!--/.Máscara-->
+
+                </div>
+            </div>
+            <!--/.Tercer Slide-->
+
+
+        </div>
+        <!--/.Slides-->
+
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+        <!--/.Controls-->
+
+    </div>
+    <!--/.Carrusel-->
+
+    <!--Layout principal-->
+    <main>
+
+    </main>
+    <!--Layout principal-->
+
+    <!--Footer-->
+    <footer>
+
+    </footer>
+    <!--Footer-->
+
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
 </body>
+
 </html>
