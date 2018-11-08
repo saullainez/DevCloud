@@ -25,18 +25,19 @@
     <header>
         <!--Navbar-->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <!--<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="background-color: #081731 !important;">-->
 
             <!--Logo-->
             <a href="#" class="navbar-brand">
                 <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" alt="DevCloud-logo" height="30">
             </a>
+            <!--/.Logo-->
 
             <!--Botón colapsable-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                 aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!--/.Botón colapsable-->
 
             <!--Contenido colapsable-->
             <div class="collapse navbar-collapse" id="basicExampleNav">
@@ -44,7 +45,7 @@
                 <!--Links-->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">Acerca de
+                        <a href="#acerca-de" class="nav-link">Acerca de
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -55,7 +56,7 @@
                         <a href="#" class="nav-link">Contacto</a>
                     </li>
                 </ul>
-                <!--Links-->
+                <!--/.Links-->
 
                 <!--Formulario de inicio de sesión-->
                 <div id="contenedor-formulario">
@@ -65,6 +66,9 @@
                         <button class="btn btn-primary my-2 my-sm-0">Iniciar Sesión</button>
                     </form>
                 </div>
+                <!--/.Formulario de inicio de sesión-->
+
+                <!--Regístrate-->
                 <div row>
                     <div class="col-12">
                         <span id="texto-registrarse">¿Todavía no tienes cuenta?</span>
@@ -72,13 +76,16 @@
                     <div class="col-12">
                         <a href="#" id="text-registrarse">¡Regístrate!</a>
                     </div>
-
                 </div>
+                <!--/.Regístrate-->
+
             </div>
+            <!--/.Contenido colapsable-->
+
         </nav>
-        <!--Navbar-->
+        <!--/.Navbar-->
     </header>
-    <!--Navegación principal-->
+    <!--/.Navegación principal-->
 
     <!--Carrusel-->
     <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -186,7 +193,8 @@
                                 <strong>¡Comparte código con tus amigos!</strong>
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Saber más
+                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Saber
+                                más
                                 <i class="fa fa-info ml-2"></i>
                             </a>
                         </div>
@@ -203,7 +211,7 @@
         </div>
         <!--/.Slides-->
 
-        <!--Controls-->
+        <!--Controles-->
         <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>
@@ -212,7 +220,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Siguiente</span>
         </a>
-        <!--/.Controls-->
+        <!--/.Controles-->
 
     </div>
     <!--/.Carrusel-->
@@ -220,16 +228,118 @@
     <!--Layout principal-->
     <main>
 
+
+        <!--Sección "Acerca de"-->
+        <section id="acerca-de" class="text-center" style="background-color:#3a7786; padding-top: 3rem; color: beige;">
+
+            <!--Título de la sección-->
+            <h2 class="titulo-seccion">¿Qué es DevCloud?</h2>
+
+            <!--Fila del sistema de grillas para la descripción-->
+            <div class="row d-flex justify-content-center mb-4">
+
+                <!--Columna del sistema de grillas-->
+                <div class="col-md-8">
+                    <div style="font-size: 3rem;">
+                        <i class="fa fa-cloud"></i>
+                    </div>
+                    
+
+                    <!--Descripción-->
+                    <p class="descripcion-seccion">
+                        DevCloud es una plataforma web para gestión y codificación
+                        colaborativa en línea de proyectos de desarrollo web del lado del cliente.
+                    </p>
+                </div>
+                <!--/.Columna del sistema de grillas-->
+            </div>
+            <!--/.Fila del sistema de grillas para la descripción-->
+
+        </section>
+        <!--/.Sección "Acerca de"-->
+
+        <!--Sección "Características"-->
+        <section id="caracteristicas" class="text-center">
+
+            <!--Subtítulo-->
+            <h2 class="mb-3">¿Qué podrá hacer con DevCloud?</h2>
+
+            <!--Fila del sistema de grillas para las características-->
+            <div class="row">
+
+                <!--Primer característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/create.png" alt="">
+                    <h4 class="my-3">Crear proyectos y archivos</h4>
+                </div>
+                <!--/.Primer característica-->
+
+                <!--Segunda característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/no-wifi.png" alt="no-wifi">
+                    <h4 class="my-3">Trabajar en modo offline</h4>
+                </div>
+                <!--/.Segunda característica-->
+
+                <!--Tercer característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/highlighter.png" alt="highlighter">
+                    <h4 class="my-3">Syntax highlighting</h4>
+                </div>
+                <!--/.Tercer característica-->
+
+                <!--Cuarta característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/exchange.png" alt="exchange">
+                    <h4 class="my-3">Compartir proyectos con otro usuarios</h4>
+                </div>
+                <!--/.Cuarta característica-->
+
+                <!--Quinta característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/code-snippet.png" alt="code-snippet">
+                    <h4 class="my-3">Crear Snippets de código</h4>
+                </div>
+                <!--/.Quinta característica-->
+
+                <!--Sexta característica-->
+                <div class="col-md-4 col-sm-6 my-4">
+                    <img class="icono" src="img/download.png" alt="download">
+                    <h4 class="my-3">Descargar los archivos creados</h4>
+                </div>
+                <!--/.Sexta característica-->
+            </div>
+            <!--/.Fila del sistema de grillas para las características-->
+        </section>
+        <!--/.Sección "Características"-->
+
+        <hr class="my-5">
+
+        <!--Sección "Planes"-->
+        <section id="planes">
+
+        </section>
+        <!--/.Sección "Planes"-->
+
+        <hr class="my-5">
+
+        <!--Sección "Contacto"-->
+        <section id="contacto">
+
+        </section>
+        <!--/.Sección "Contacto"-->
+
+
     </main>
-    <!--Layout principal-->
+    <!--/.Layout principal-->
 
     <!--Footer-->
     <footer>
 
     </footer>
-    <!--Footer-->
+    <!--/.Footer-->
 
-
+    <!--Scripts-->
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>

@@ -16,6 +16,14 @@
     font-size: 1.5rem !important;
 }
 
+.titulo-seccion{
+    font-size: 3rem;
+}
+
+.descripcion-seccion{
+    font-size: 1.5rem;
+}
+
 #texto-registrarse{
     color: antiquewhite;
 }
@@ -55,9 +63,21 @@
     text-decoration: underline;
 }
 
+.icono{
+    width: 100px;
+}
+
+section {
+    padding-right: 100px;
+    padding-left: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
 
 
-@media (min-width: 576px) and (max-width: 1080px){
+
+@media (min-width: 576px) and (max-width: 1099px){
 .mr-sm-2, .mx-sm-2 {
     margin-right: .1rem!important;
 }
@@ -66,6 +86,6 @@
     padding: 0.50rem 0.5rem;
 }
 #formulario-login .form-control {
-    font-size: 0.6em;
+    font-size: 0.56em;
 }
 }
