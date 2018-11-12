@@ -75,6 +75,68 @@ section {
     width: 100%;
 }
 
+.plan-header{
+    text-align: center;
+    padding: 20px 15px 0;
+    /*border-radius: 6px;
+    border: #202e4c;
+    border-style: double;*/
+    color: #19647e
+}
+
+.plan-header h2 {
+    margin: 0 0 20px;
+    font-size: 40px;
+    line-height: 30px;
+}
+
+.precio{
+    margin: 0 0 20px;
+}
+
+.moneda{
+    font-size: 20px;
+    line-height: 20px;
+    top: -10px;
+    position: relative;
+}
+
+.plan-header .precio span {
+    font-size: 45px;
+    line-height: 45px;
+    margin: 0 5px;
+}
+
+.tiempo{
+    font-size: 15px;
+    line-height: 15px;
+    top: -15px;
+    position: relative;
+}
+
+.divisor-plan{
+    margin-bottom: 0;
+    color: #0095eb;
+    background: #0095eb;
+}
+
+.descripcion-plan{
+    padding: 10px 30px;
+    text-align: center;
+}
+
+
+.descripcion-plan ul {
+    margin: 0;
+    font-size: 100%;
+    line-height: normal;
+    list-style: none outside;
+
+}
+
+.card .card-body .card-text {
+    font-size: 1.1rem !important;
+}
 
 
 @media (min-width: 576px) and (max-width: 1099px){
