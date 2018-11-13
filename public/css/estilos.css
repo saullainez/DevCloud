@@ -138,6 +138,10 @@ section {
     font-size: 1.1rem !important;
 }
 
+.separador-footer{
+    background-color: #7ba0e2!important;
+    width: 60px;
+}
 
 @media (min-width: 576px) and (max-width: 1099px){
 .mr-sm-2, .mx-sm-2 {
