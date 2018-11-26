@@ -8,10 +8,21 @@ $(document).ready(function () {
         /*Si el valor del input coincide con la expresión regular.
         test() es un método nativo de JS, retorna true si encuentra coincidencias y false si no 
         las encuentra.*/
-        if (regex.test($('.correo').val().trim())) {
-            $(".email-invalido").hide();//Si encuentra coincidencias, esconde el mensaje de email inválido.
+        if (regex.test($(this).val().trim())) {
+            $(this).removeClass("invalid");
+            $(this).addClass("valid");
         } else {
-            $(".email-invalido").show();//Si no encuentra coincidencias, muestra el mensaje de email inválido.
+            $(this).removeClass("valid");
+            $(this).addClass("invalid");
+        }
+    });
+
+    $(".contraseña").on("keyup", function(){
+        var regex = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+        if(regex.test($(".contraseña").val().trim())){
+            $('.contraseña').removeClass("invalid");
+        } else {
+            $('.contraseña').addClass("invalid");
         }
     });
 })

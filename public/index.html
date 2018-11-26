@@ -75,7 +75,7 @@
                         <span id="texto-registrarse">¿Todavía no tienes cuenta?</span>
                     </div>
                     <div class="col-12">
-                        <a href="#" id="text-registrarse">¡Regístrate!</a>
+                        <a href="#" data-toggle="modal" data-target="#modalRegisterForm" id="text-registrarse">¡Regístrate!</a>
                     </div>
                 </div>
                 <!--/.Regístrate-->
@@ -121,11 +121,12 @@
                                 <strong>DevCloud te ayuda a gestionar y compartir tus proyectos web FrontEnd</strong>
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Inicar
+                            <a target="_blank" href="#" class="btn btn-outline-white btn-lg" data-toggle="modal"
+                                data-target="#modalLoginForm">Inicar
                                 sesión
                                 <i class="fa fa-sign-in ml-2"></i>
                             </a>
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Registrarse
+                            <a target="_blank" href="#" class="btn btn-outline-white btn-lg">Registrarse
                                 <i class="fa fa-user-plus ml-2"></i>
                             </a>
                         </div>
@@ -159,7 +160,7 @@
                                 <strong>Tenemos el plan ideal para tus necesidades</strong>
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Ver
+                            <a href="#planes" class="btn btn-outline-white btn-lg">Ver
                                 planes
                                 <i class="fa fa-info ml-2"></i>
                             </a>
@@ -194,7 +195,7 @@
                                 <strong>¡Comparte código con tus amigos!</strong>
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Saber
+                            <a href="#caracteristicas" class="btn btn-outline-white btn-lg">Saber
                                 más
                                 <i class="fa fa-info ml-2"></i>
                             </a>
@@ -479,10 +480,8 @@
                         </div>
                         <div class="md-form form-sm"> <i class="fa fa-envelope prefix"></i>
                             <input type="text" id="email" class="form-control form-control-sm correo" required>
-                            <label for="email">Correo electrónico</label>
-                            <div class="email-invalido">
-                                Correo electrónico inválido
-                            </div>
+                            <label data-error="Correo electrónico inválido" data-success="Correcto" for="email">Correo
+                                electrónico</label>
                             <div class="invalid-feedback">
                                 El correo electrónico es requerido
                             </div>
@@ -513,16 +512,16 @@
                     <div id="enviado" style="display:none;" class="alert alert-success alert-dismissible fade show"
                         role="alert">
                         ¡Mensaje enviado correctamente!
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div id="respuesta-usuario" style="display:none;" class="alert alert-success alert-dismissible fade show"
                         role="alert">
                         Nos hemos puesto en contacto con usted
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <!--/.Alertas-->
 
@@ -531,6 +530,96 @@
 
         </section>
         <!--/.Sección "Contacto"-->
+
+        <!--Modales-->
+
+        <!--Modal Login-->
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Iniciar sesión</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form class="needs-validation" novalidate>
+                            <div class="md-form mb-5">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="email" id="form-email-login" class="form-control correo" required>
+                                <label data-error="Correo electrónico inválido" data-success="Correcto" for="form-email-login">Correo
+                                    electrónico</label>
+                                <div class="invalid-feedback">
+                                    El correo electrónico es requerido
+                                </div>
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="defaultForm-pass" class="form-control">
+                                <label for="defaultForm-pass">Contraseña</label>
+                            </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-default">Iniciar sesión</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--/.Modal Login-->
+
+        <!--Modal Registro-->
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Formulario de registro</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form class="needs-validation" novalidate>
+                            <div class="md-form mb-5">
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <input type="text" id="form-nombre" class="form-control">
+                                <label for="form-nombre">Nombre</label>
+                            </div>
+                            <div class="md-form mb-5">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="email" id="form-email" class="form-control correo">
+                                <label data-error="Correo electrónico inválido" data-success="right" for="form-email">Email</label>
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="form-pass" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form-pass">Contraseña</label>
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="form-pass2" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form-pass2">Vuelve a escribir tu
+                                    contraseña</label>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-deep-orange">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal Registro-->
+
+        <!--/.Modales-->
 
 
     </main>
@@ -633,7 +722,6 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/validaciones.js"></script>
-
 
 </body>
 
