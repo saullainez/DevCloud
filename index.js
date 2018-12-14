@@ -4,25 +4,34 @@ var bodyParser = require('body-parser');//Importar el módulo body-parser.
 esto facilita acceder a esos ellos.*/
 var controladorCorreo = require('./controladorCorreo.js');//Importar el módulo controladorCorreo.
 
-var app = express();//Inicializar laa plicación express.
+var app = express();//Inicializar la aplicación express.
 
 app.use(express.static("public")); //El framework "static" per.ite usar ficheros estáticos (ejemplo imágenes, css, etc.) en nuestro proyecto.
 app.use(bodyParser.json());//Para procesar las peticiones que vienen como JSON.
-app.use(bodyParser.urlencoded({extended:true}));//Para procesar las peticiones que vienen en la URL.
+app.use(bodyParser.urlencoded({ extended: true }));//Para procesar las peticiones que vienen en la URL.
 
+var passport = require('passport');
+var flash = require('connect-flash');
+require('./passport')(app, passport);
+app.use(flash());
+
+app.set('views', './public/vistas')
+app.set('view engine', 'pug');
+
+require('./rutas/rutas.js')(app, passport);
 
 //----------------------------------RUTAS----------------------------------------------------------
 //POST que maneja el envío del email.
-app.post('/email', function(req, res){
+app.post('/email', function (req, res) {
     /*Se obtiene el JSON de configuración del correo a mandar y se almacena en mailOptions.
     Este es el JSON que se define en la función responderCorreoDeUsuario o enviarCorreoDeUsuario.*/
     var mailOptions = req.body;
     //Se usa la función "enviarCorreo" del módulo "controladorCorreo" para enviar el email.
-    controladorCorreo.enviarCorreo(mailOptions, function(){
+    controladorCorreo.enviarCorreo(mailOptions, function () {
         res.json(resp);
     });
 })
 
-app.listen(8080, function(){
+app.listen(8080, function () {
     console.log("Servidor corriendo");
 });

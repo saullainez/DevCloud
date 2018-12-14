@@ -1,0 +1,24 @@
+extends layout2
+block contenido 
+
+    div.container-fluid
+      if (message && message.length > 0)
+        div.alert.alert-danger.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message}
+          button.close(type="button" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true") &times;
+      h1.mb-4(style="text-align:center; color:#f5f5dcb3") Inicia sesión en tu cuenta
+      div.contenedor-formulario-login
+        form.needs-validation(action="/signin" method="POST" novalidate)
+          div.md-form.mb-5
+            i.fa.fa-envelope.prefix.grey-text
+            input.form-control.correo#form-email-login(name="correo" type="email" required)
+            label(data-error="Correo electrónico inválido" data-success="Correcto" for="form-email-login") Correo electrónico
+            div.invalid-feedback El correo electrónico es requerido
+          div.md-form.mb-4
+            i.fa.fa-lock.prefix.grey-text
+            input.form-control#defaultForm-pass(name="contrasena" type="password")
+            label(for="defaultForm-pass") Contraseña
+          div(style="text-align: center;")
+            button.btn.btn-primary(type="submit") Iniciar sesión
+
+

@@ -4,6 +4,35 @@
     height: 66px;
 }
 
+.contenedor-formulario-login {
+    background-color: rgba(0, 0, 0, 0.62);
+    color: #ffffff;
+    width: 497px;
+    height: 320px;
+    border-radius: 8px;
+    padding: 3rem 4rem 3rem 4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-sesion {
+    position: relative;
+    left: 6px;
+    font-size: 1.3em !important;
+}
+
+.contenedor-formulario-registro{
+    background-color: rgba(0, 0, 0, 0.62);
+    color: #ffffff;
+    width: 497px;
+    height: 651px;
+    border-radius: 8px;
+    padding: 1rem 4rem 3rem 4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .titulo-slide{
     font-size: 4.5rem !important;
 }
@@ -52,13 +81,13 @@
     background-color: #19647e !important;
     border-color: #314c69;
 }
-#text-registrarse {
+.text-registrarse {
     position: relative;
     left: 43px;
     font-size: 1.3em !important;
 }
 
-#text-registrarse:hover {
+.text-registrarse:hover {
     color: #439dff !important;
     text-decoration: underline;
 }

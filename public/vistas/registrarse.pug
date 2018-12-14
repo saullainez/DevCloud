@@ -1,0 +1,43 @@
+extends layout2
+block cuenta
+
+    div.row(style="margin:auto;")
+        div.col-12
+            span#texto-registrarse ¿Ya tienes cuenta?
+        div.col-12
+            a.text-sesion(href="/signin") ¡Inicia sesión!
+block contenido 
+    div.container-fluid
+      if (message && message.length > 0)
+        div.alert.alert-danger.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message}
+          button.close(type="button" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true") &times;
+      h1.mb-4(style="text-align:center; color:#f5f5dcb3") Forma parte de la familia DevCloud
+      div.contenedor-formulario-registro
+        form.needs-validation(action="/registrarse" method="POST" novalidate)
+            div.md-form.mb-5
+                i.fa.fa-user.prefix.grey-text
+                input.form-control#form-nombre(name="nombre" type="text")
+                label(for="form-nombre") Nombre
+            div.md-form.mb-5
+                i.fa.fa-envelope.prefix.grey-text
+                input.form-control.correo#form-email(name="correo" type="email")
+                label(data-error="Correo electrónico inválido" data-success="Correcto" for="form-email") Correo electrónico
+            div.md-form.mb-5
+                i.fa.fa-lock.prefix.grey-text
+                input.form-control.contrasena#form-pass(name="contrasena" type="password")
+                label(for="form-pass") Contraseña
+            div.md-form.mb-5
+                i.fa.fa-lock.prefix.grey-text
+                input.form-control.contrasena#form-pass2(name="pass2" type="password")
+                label(for="form-pass2") Vuelve a escribir tu contraseña
+            div.alert.alert-danger.alert-dismissible.fade.show#pass(style="display:none;" role="alert") La contraseña debe contener al menos una mayúscula, una minúscula, un dígito, un caracter especial y más de 7 caracteres
+                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+            div.alert.alert-success.alert-dismissible.fade.show#contrasena-igual(style="display:none;" role="alert")
+                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+            div(style="text-align: center;")
+                button.btn.btn-primary#registrarse(type="submit" disabled) Registrarse
+
+

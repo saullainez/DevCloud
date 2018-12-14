@@ -1,0 +1,64 @@
+doctype html
+html(lang="en")
+    head
+        block head
+            meta(charset="UTF-8")
+            meta(name="viewport" content="width=device-width, initial-scale=1.0")
+            meta(http-equiv="X-UA-Compatible" content="ie=edge")
+            title DevCloud-Code Together!
+            link(rel="shortcut icon" href="img/Favicon.png" type="image/x-icon")
+            link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+            link(href="css/bootstrap.min.css" rel="stylesheet")
+            link(href="css/mdb.min.css" rel="stylesheet")
+            link(rel="stylesheet" href="css/estilos.css")
+            link(href="css/style.min.css" rel="stylesheet")
+            link(rel="stylesheet" href="css/perfil.css")
+            style.
+                @media (min-width: 800px) and (max-width: 850px) {
+                    .navbar:not(.top-nav-collapse) {
+                        background: #1C2331 !important;
+                    }
+                }
+                @media (min-width: 1200px){
+                    .navbar, .page-footer, main {
+                        padding-left: 90px;
+                    }
+                }
+    body(style="background-color:#263d44;")
+        header
+            nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.scrolling-navbar
+                a.navbar-brand(href="/")
+                    img(src="img/Logo.png" alt="DevCloud-logo" height="90")
+                button.navbar-toggler(type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                div.collapse.navbar-collapse#basicExampleNav
+                    ul.navbar-nav.mr-auto(style="margin:auto;")
+                        li.nav-item.active
+                            a.nav-link(href="/") Inicio
+                        |||||
+                        li.nav-item
+                            a.nav-link(href="/#acerca-de") Sobre nosotros
+                        |||||
+                        li.nav-item
+                            a.nav-link(href="/#planes") Planes
+                        |||||
+                        li.nav-item
+                            a.nav-link(href="/#contacto") Contacto
+
+                    block cuenta    
+                        div.row(style="margin:auto;")
+                            div.col-12
+                                span#texto-registrarse ¿Todavía no tienes cuenta?
+                            div.col-12
+                                a.text-registrarse(href="/registrarse") ¡Regístrate!
+                        
+        main(style="padding-top: 9.5rem!important;")
+            block contenido
+    block scripts   
+        script(type="text/javascript" src="js/jquery-3.3.1.min.js")
+        script(type="text/javascript" src="js/bootstrap.min.js")
+        script(type="text/javascript" src="js/mdb.min.js")
+        script(type="text/javascript" src="js/index.js")
+        script(type="text/javascript" src="js/validaciones.js")
+        script(type="text/javascript" src="js/activar.js")
