@@ -1,0 +1,10 @@
+extends layout
+block contenido
+  if (message && message.length > 0) 
+    div.alert.alert-success.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message}, #{nombreUsuario}!
+      button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  div.card.mb-4.wow.fadeIn
+    div.card-body.d-sm-flex.justify-content-between
+      h3.mb-2.mb-sm-0.pt-1 Perfil
+        //h3= "Bienvenido " + nombreUsuario 

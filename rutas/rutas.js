@@ -1,15 +1,15 @@
-var path = require("path");
+const middlewares = require('../middlewares');
 module.exports = function (app, passport) {
-    app.get("/", paginaInicio, function (req, res, next) {
-        res.render('dashboard');
+    app.get("/",  function (req, res, next) {
+        res.render('index');
     });
 
-    app.get("/signin", function (req, res) {
+    app.get("/signin", middlewares.loginRegistro, function (req, res) {
         res.render('signin', { message: req.flash('message') });
 
     });
 
-    app.get("/registrarse", function (req, res) {
+    app.get("/registrarse", middlewares.loginRegistro, function (req, res) {
         res.render('registrarse', { message: req.flash('mensaje-login') });
     });
 
@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
     });
 
     app.post("/registrarse", passport.authenticate('local-registro', {
-        successRedirect: '/exitoso',
+        successRedirect: '/registroexitoso',
         failureRedirect: '/falloregistro',
         failureFlash: true
     }), function (req, res, info) {
@@ -40,8 +40,8 @@ module.exports = function (app, passport) {
     });
 
     app.get("/registroexitoso", function (req, res) {
-        req.flash('mensaje-login', 'Bienvenido a la familia DevCloud');
-        res.redirect("/dashboard");
+        req.flash('mensaje-login', '¡Bienvenido(a) a la familia DevCloud');
+        res.redirect("/perfil");
     });
 
     app.get("/exitoso", function (req, res) {
@@ -49,12 +49,16 @@ module.exports = function (app, passport) {
         res.redirect("/dashboard");
     });
     app.get("/iniciarsesion", function (req, res) {
-        req.flash('message', 'Necesita iniciar sesión para acceder a esta página');
+        req.flash('message', 'Necesitas iniciar sesión para acceder a esta página');
         res.redirect("/signin");
     });
-    app.get('/dashboard', isAuthenticated, function (req, res, netx) {
+    app.get('/dashboard', middlewares.isAuthenticated, function (req, res, netx) {
         var nombreUsuario = req.session.user.Nombre;
         res.render('dashboard', { nombreUsuario: nombreUsuario, message: req.flash('message') });
+    });
+    app.get('/perfil', middlewares.isAuthenticated, function (req, res, netx) {
+        var nombreUsuario = req.session.user.Nombre;
+        res.render('perfil', { nombreUsuario: nombreUsuario, message: req.flash('mensaje-login') });
     });
 
     app.get('/logout', function (req, res) {
@@ -62,19 +66,5 @@ module.exports = function (app, passport) {
         req.logout();
         res.redirect('/signin');
     });
-
-
-
-    function isAuthenticated(req, res, next) {
-        if (req.session.user)
-            return next();
-
-        res.redirect('/iniciarsesion');
-    }
-    function paginaInicio(req, res, next) {
-        if (req.session.user)
-            res.render('dashboard');
-        res.sendFile(path.join(__dirname, '../public/vistas', 'index.html'));
-    }
 
 }

@@ -1,0 +1,495 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title DevCloud-Code Together!
+  link(rel='shortcut icon' href='img/Favicon.png' type='image/x-icon')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(href='css/bootstrap.min.css' rel='stylesheet')
+  link(href='css/mdb.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='css/estilos.css')
+  link(href='css/style.min.css' rel='stylesheet')
+  style(type='text/css').
+    @media (min-width: 800px) and (max-width: 850px) {
+    .navbar:not(.top-nav-collapse) {
+    background: #1C2331 !important;
+    }
+    }
+// Navegación principal
+header
+  // Navbar
+  nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.scrolling-navbar
+    // Logo
+    a.navbar-brand(href='/')
+      img(src='img/Logo.png' alt='DevCloud-logo' height='90')
+    // /.Logo
+    // Botón colapsable
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#basicExampleNav' aria-controls='basicExampleNav' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    // /.Botón colapsable
+    // Contenido colapsable
+    #basicExampleNav.collapse.navbar-collapse
+      // Links
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='#acerca-de')
+            | Acerca de
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='#planes') Planes
+        li.nav-item
+          a.nav-link(href='#contacto') Contacto
+      // /.Links
+      // Formulario de inicio de sesión
+      #contenedor-formulario
+        form#formulario-login.form-inline.my-2.my-lg-0.ml-auto(action='/signin' method='POST')
+          input.form-control.mr-sm-2(name='correo' type='text' placeholder='Correo electrónico' aria-label='Correo electrónico')
+          input.form-control.mr-sm-2(name='contrasena' type='password' placeholder='Contraseña' aria-label='Contraseña')
+          button#sesion.btn.btn-primary.my-2.my-sm-0(type='submit') Iniciar Sesi&oacute;n
+      // /.Formulario de inicio de sesión
+      // Regístrate
+      div(row='')
+        .col-12
+          span#texto-registrarse &iquest;Todav&iacute;a no tienes cuenta?
+        .col-12
+          a.text-registrarse(href='#' data-toggle='modal' data-target='#modalRegisterForm') &iexcl;Reg&iacute;strate!
+      // /.Regístrate
+    // /.Contenido colapsable
+  // /.Navbar
+// /.Navegación principal
+// Carrusel
+#carousel-example-1z.carousel.slide.carousel-fade(data-ride='carousel')
+  // Indicadores
+  ol.carousel-indicators
+    li.active(data-target='#carousel-example-1z' data-slide-to='0')
+    li(data-target='#carousel-example-1z' data-slide-to='1')
+    li(data-target='#carousel-example-1z' data-slide-to='2')
+  // /.Indicadores
+  // Slides
+  .carousel-inner(role='listbox')
+    // Primer Slide
+    .carousel-item.active
+      .view(style="background-image: url('img/Slide1.png'); background-repeat: no-repeat; background-size: cover;")
+        // Máscara
+        .mask.rgba-black-light.d-flex.justify-content-center.align-items-center
+          // Contenido
+          .text-center.white-text.mx-5.wow.fadeIn
+            h1.mb-4.titulo-slide
+              strong DevCloud enviar correo
+            p.slogan-slide
+              strong Code Together!
+            p.mb-4.d-none.d-md-block.texto-slide
+              strong DevCloud te ayuda a gestionar y compartir tus proyectos web FrontEnd
+            a.btn.btn-outline-white.btn-lg(target='_blank' href='#' data-toggle='modal' data-target='#modalLoginForm')
+              | Inicar
+              | sesi&oacute;n
+              i.fa.fa-sign-in.ml-2
+            a.btn.btn-outline-white.btn-lg(data-toggle='modal' data-target='#modalRegisterForm' href='#')
+              | Registrarse
+              i.fa.fa-user-plus.ml-2
+          // /.Contenido
+        // /.Máscara
+    // /.Primer Slide
+    // Segundo Slide
+    .carousel-item
+      .view(style="background-image: url('img/Slide2.png'); background-repeat: no-repeat; background-size: cover;")
+        // Máscara
+        .mask.rgba-black-light.d-flex.justify-content-center.align-items-center
+          // Contenido
+          .text-center.white-text.mx-5.wow.fadeIn
+            h1.mb-4.titulo-slide
+              strong DevCloud
+            p.slogan-slide
+              strong Code Together!
+            p.mb-4.d-none.d-md-block.texto-slide
+              strong Tenemos el plan ideal para tus necesidades
+            a.btn.btn-outline-white.btn-lg(href='#planes')
+              | Ver
+              | planes
+              i.fa.fa-info.ml-2
+          // /.Contenido
+        // /.Máscara
+    // /.Segundo Slide
+    // Tercer Slide
+    .carousel-item
+      .view(style="background-image: url('img/Slide3.png'); background-repeat: no-repeat; background-size: cover;")
+        // Máscara
+        .mask.rgba-black-light.d-flex.justify-content-center.align-items-center
+          // Contenido
+          .text-center.white-text.mx-5.wow.fadeIn
+            h1.mb-4.titulo-slide
+              strong DevCloud
+            p.slogan-slide
+              strong Code Together!
+            p.mb-4.d-none.d-md-block.texto-slide
+              strong &iexcl;Comparte c&oacute;digo con tus amigos!
+            a.btn.btn-outline-white.btn-lg(href='#caracteristicas')
+              | Saber
+              | m&aacute;s
+              i.fa.fa-info.ml-2
+          // /.Contenido
+        // /.Máscara
+    // /.Tercer Slide
+  // /.Slides
+  // Controles
+  a.carousel-control-prev(href='#carousel-example-1z' role='button' data-slide='prev')
+    span.carousel-control-prev-icon(aria-hidden='true')
+    span.sr-only Anterior
+  a.carousel-control-next(href='#carousel-example-1z' role='button' data-slide='next')
+    span.carousel-control-next-icon(aria-hidden='true')
+    span.sr-only Siguiente
+  // /.Controles
+// /.Carrusel
+// Layout principal
+main
+  // Sección "Acerca de"
+  section#acerca-de.text-center(style='background-color:#3a7786; padding-top: 3rem; color: beige;')
+    // Título de la sección
+    h2.titulo-seccion &iquest;Qu&eacute; es DevCloud?
+    // Fila del sistema de grillas para la descripción
+    .row.d-flex.justify-content-center.mb-4
+      // Columna del sistema de grillas
+      .col-md-8
+        div(style='font-size: 3rem;')
+          i.fa.fa-cloud
+        // Descripción
+        p.descripcion-seccion
+          | DevCloud es una plataforma web para gesti&oacute;n y codificaci&oacute;n
+          | colaborativa en l&iacute;nea de proyectos de desarrollo web del lado del cliente.
+      // /.Columna del sistema de grillas
+    // /.Fila del sistema de grillas para la descripción
+  // /.Sección "Acerca de"
+  // Sección "Características"
+  section#caracteristicas.text-center
+    // Subtítulo
+    h2.mb-3 &iquest;Qu&eacute; podr&aacute; hacer con DevCloud?
+    // Fila del sistema de grillas para las características
+    .row
+      // Primer característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/create.png' alt='')
+        h4.my-3 Crear proyectos y archivos
+      // /.Primer característica
+      // Segunda característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/no-wifi.png' alt='no-wifi')
+        h4.my-3 Trabajar en modo offline
+      // /.Segunda característica
+      // Tercer característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/highlighter.png' alt='highlighter')
+        h4.my-3 Syntax highlighting
+      // /.Tercer característica
+      // Cuarta característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/exchange.png' alt='exchange')
+        h4.my-3 Compartir proyectos con otro usuarios
+      // /.Cuarta característica
+      // Quinta característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/code-snippet.png' alt='code-snippet')
+        h4.my-3 Crear Snippets de c&oacute;digo
+      // /.Quinta característica
+      // Sexta característica
+      .col-md-4.col-sm-6.my-4
+        img.icono(src='img/download.png' alt='download')
+        h4.my-3 Descargar los archivos creados
+      // /.Sexta característica
+    // /.Fila del sistema de grillas para las características
+  // /.Sección "Características"
+  // Sección "Planes"
+  section#planes.text-center(style='background-color: #222d44; padding-top: 2rem;')
+    // Título de la sección
+    h2.titulo-seccion.my-3(style='color: beige;') &iquest;Qu&eacute; est&aacute;s esperando?
+    h2.mb-5(style='color: beige;') &iexcl;Tenemos el plan ideal para tus necesidades!
+    .row
+      .col-lg-4.mb-5
+        // Plan gratis
+        .card
+          // Encabezado del plan
+          .plan-header
+            img.mb-3(src='img/free-tag.png' alt='')
+            // Tipo de plan
+            h2 Gratis
+            // Precio del plan
+            .precio
+              sup.moneda $
+              span 5
+              sup.tiempo /mes
+            // /.Precio del plan
+            hr.divisor-plan
+          // /.Encabezado del plan
+          // Cuerpo del plan
+          .card-body
+            // Descripción del plan
+            .descripcion-plan
+              p.card-text Con este plan tendr&aacute;s acceso a:
+              h5
+                i.fa.fa-check-circle
+                |  Crear 5 proyectos
+              h5
+                i.fa.fa-check-circle
+                |  Crear snippets ilimitados
+              h5
+                i.fa.fa-check-circle
+                |  Visualizaci&oacute;n en tiempo real
+            // /.Descripción del plan
+            // Botón
+            a.btn.btn-primary(href='#') Adquirir
+          // /.Cuerpo del plan
+        // /.Plan gratis
+      .col-lg-4.mb-5
+        // Plan básico
+        .card
+          // Encabezado del plan
+          .plan-header
+            img.mb-3(src='img/premium-tag.png' alt='')
+            // Tipo de plan
+            h2 B&aacute;sico
+            // Precio del plan
+            .precio
+              sup.moneda $
+              span 8
+              sup.tiempo /mes
+            // /.Precio del plan
+            hr.divisor-plan
+          // /.Encabezado del plan
+          // Cuerpo del plan
+          .card-body
+            // Descripción del plan
+            .descripcion-plan
+              p.card-text Con este plan tendr&aacute;s acceso a:
+              h5
+                i.fa.fa-check-circle
+                |  Crear 10 proyectos
+              h5
+                i.fa.fa-check-circle
+                |  Crear snippets ilimitados
+              h5
+                i.fa.fa-check-circle
+                |  Visualizaci&oacute;n en tiempo real
+            // /.Descripción del plan
+            // Botón
+            a.btn.btn-primary(href='#') Adquirir
+          // /.Cuerpo del plan
+        // /.Plan básico
+      .col-lg-4.mb-5
+        // Plan avanzado
+        .card
+          // Encabezado del plan
+          .plan-header
+            img.mb-3(src='img/premium-tag.png' alt='')
+            // Tipo de plan
+            h2 Avanzado
+            // Precio del plan
+            .precio
+              sup.moneda $
+              span 12
+              sup.tiempo /mes
+            // /.Precio del plan
+            hr.divisor-plan
+          // /.Encabezado del plan
+          // Cuerpo del plan
+          .card-body
+            // Descripción del plan
+            .descripcion-plan
+              p.card-text Con este plan tendr&aacute;s acceso a:
+              h5
+                i.fa.fa-check-circle
+                |  Crear 20 proyectos
+              h5
+                i.fa.fa-check-circle
+                |  Crear snippets ilimitados
+              h5
+                i.fa.fa-check-circle
+                |  Visualizaci&oacute;n en tiempo real
+            // /.Descripción del plan
+            // Botón
+            a.btn.btn-primary(href='#') Adquirir
+          // /.Cuerpo del plan
+        // /.Plan avanzado
+  // /.Sección "Planes"
+  // Sección "Contacto"
+  section#contacto(style='padding-top: 2rem;')
+    // Título de la sección
+    h2.titulo-seccion.text-center(style='color:black;') Cont&aacute;ctanos
+    .row
+      .col-10(style='margin-left: auto; margin-right: auto;')
+        // Formulario de contacto
+        form#formulario.p-3.grey-text.needs-validation(novalidate='')
+          .md-form.form-sm
+            i.fa.fa-user.prefix
+            input#nombre.form-control.form-control-sm(type='text' required='')
+            label(for='nombre') Nombre
+            .invalid-feedback
+              | El nombre es requerido
+          .md-form.form-sm
+            i.fa.fa-envelope.prefix
+            input#email.form-control.form-control-sm.correo(type='text' required='')
+            label(data-error='Correo electrónico inválido' data-success='Correcto' for='email')
+              | Correo
+              | electr&oacute;nico
+            .invalid-feedback
+              | El correo electr&oacute;nico es requerido
+          .md-form.form-sm
+            i.fa.fa-tag.prefix
+            input#asunto.form-control.form-control-sm(type='text' required='')
+            label(for='asunto') Asunto
+            .invalid-feedback
+              | El asunto es requerido
+          .md-form.form-sm
+            i.fa.fa-pencil.prefix
+            textarea#mensaje.md-textarea.form-control.form-control-sm(type='text' rows='4' required='')
+            label(for='mensaje') Mensaje
+            .invalid-feedback
+              | El mensaje es requerido
+          .text-center.mt-4
+            button#enviarCorreo.btn.btn-primary(type='submit')
+              | Enviar 
+              i.fa.fa-paper-plane-o.ml-1
+        // /.Formulario de contacto
+        // Alertas
+        #enviado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert')
+          | &iexcl;Mensaje enviado correctamente!
+          button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
+        #respuesta-usuario.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert')
+          | Nos hemos puesto en contacto con usted
+          button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
+        // /.Alertas
+  // /.Sección "Contacto"
+  // Modales
+  // Modal Login
+  #modalLoginForm.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header.text-center
+          h4.modal-title.w-100.font-weight-bold Iniciar sesi&oacute;n
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body.mx-3
+          form.needs-validation(action='/signin' method='POST' novalidate='')
+            .md-form.mb-5
+              i.fa.fa-envelope.prefix.grey-text
+              input#form-email-login.form-control.correo(name='correo' type='email' required='')
+              label(data-error='Correo electrónico inválido' data-success='Correcto' for='form-email-login')
+                | Correo
+                | electr&oacute;nico
+              .invalid-feedback
+                | El correo electr&oacute;nico es requerido
+            .md-form.mb-4
+              i.fa.fa-lock.prefix.grey-text
+              input#defaultForm-pass.form-control(name='contrasena' type='password')
+              label(for='defaultForm-pass') Contrase&ntilde;a
+        .modal-footer.d-flex.justify-content-center
+          button.btn.btn-primary(type='submit') Iniciar sesi&oacute;n
+  // /.Modal Login
+  // Modal Registro
+  #modalRegisterForm.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header.text-center
+          h4.modal-title.w-100.font-weight-bold Formulario de registro
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body.mx-3
+          form.needs-validation(action='/registrarse' method='POST' novalidate='')
+            .md-form.mb-5
+              i.fa.fa-user.prefix.grey-text
+              input#form-nombre.form-control(name='nombre' type='text')
+              label(for='form-nombre') Nombre
+            .md-form.mb-5
+              i.fa.fa-envelope.prefix.grey-text
+              input#form-email.form-control.correo(name='correo' type='email')
+              label(data-error='Correo electrónico inválido' data-success='Correcto' for='form-email') Email
+            .md-form.mb-5
+              i.fa.fa-lock.prefix.grey-text
+              input#form-pass.form-control.contrasena(name='contrasena' type='password')
+              label(data-error='wrong' data-success='right' for='form-pass') Contrase&ntilde;a
+            .md-form.mb-4
+              i.fa.fa-lock.prefix.grey-text
+              input#form-pass2.form-control.contrasena(name='pass2' type='password')
+              label(data-error='wrong' data-success='right' for='form-pass2')
+                | Vuelve a escribir tu
+                | contrase&ntilde;a
+            #pass.alert.alert-danger.alert-dismissible.fade.show(style='display:none;' role='alert')
+              | La contrase&ntilde;a debe contener al menos una may&uacute;scula, una min&uacute;scula, un d&iacute;gito, un
+              | caracter especial y m&aacute;s de 7 caracteres
+              button.close(type='button' data-dismiss='alert' aria-label='Close')
+                span(aria-hidden='true') &times;
+            #contrasena-igual.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert')
+              button.close(type='button' data-dismiss='alert' aria-label='Close')
+                span(aria-hidden='true') &times;
+        .modal-footer.d-flex.justify-content-center
+          button#registrarse.btn.btn-primary(type='submit' disabled='') Registrarse
+  // Modal Registro
+  // /.Modales
+// /.Layout principal
+// Footer
+footer.page-footer.font-small.unique-color-dark
+  // Redes sociales
+  div(style='background-color: #24355C !important;')
+    .row.py-4.d-flex.align-items-center
+      // Texto
+      .col-md-6.col-lg-5.text-center.mb-4.mb-md-0
+        h6.mb-0.white-text
+          | &iexcl;S&iacute;guenos en nuestras redes sociales!
+      // /.Texto
+      // Íconos
+      .col-md-6.col-lg-5.text-center.text-md-right
+        // Facebook
+        a.fb-ic.ml-0(href='#')
+          i.fa.fa-facebook.white-text.mr-4
+        // Twitter
+        a.tw-ic(href='#')
+          i.fa.fa-twitter.white-text.mr-4
+        // Instagram
+        a.ins-ic(href='#')
+          i.fa.fa-instagram.white-text.mr-lg-4
+      // /.Íconos
+  // /.Redes sociales
+  // Footer Links
+  .container.mt-5.mb-4.text-center.text-md-left
+    .row.mt-3
+      // Columna DevCloud
+      .col-5.mb-4
+        h4
+          strong DevCloud
+        hr.separador-footer.mb-2.mt-0.d-inline-block.mx-auto
+        p
+          | DevCloud es una plataforma web para gesti&oacute;n y codificaci&oacute;n
+          | colaborativa en l&iacute;nea de proyectos de desarrollo web del lado del cliente.
+      // /.Columna DevCloud
+      // Columna Planes
+      .col-3.mb-4
+        h4
+          strong Planes
+        hr.separador-footer.mb-2.mt-0.d-inline-block.mx-auto
+        p Gratuito
+        p B&aacute;sico
+        p Avanzado
+      // /.Columna Planes
+      // Columna Contacto
+      .col-4.mb-4
+        h4
+          strong Contacto
+        hr.separador-footer.mb-2.mt-0.d-inline-block.mx-auto
+        p
+          i.fa.fa-envelope.mr-3
+          |                         info@devcloud.com
+      // /.Columna Contacto
+  // /.Footer Links
+  // Copyright
+  .footer-copyright.text-center.py-3
+    | &copy; 2018 Copyright: DevCloud
+  // /.Copyright
+// /.Footer
+// Scripts
+script(type='text/javascript' src='js/jquery-3.3.1.min.js')
+script(type='text/javascript' src='js/bootstrap.min.js')
+script(type='text/javascript' src='js/mdb.min.js')
+script(type='text/javascript' src='js/index.js')
+script(type='text/javascript' src='js/validaciones.js')
+script(type='text/javascript' src='js/activar.js')

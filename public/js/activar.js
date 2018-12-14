@@ -4,7 +4,7 @@ $(document).ready(function () {
     alert(mensaje);
     if(mensaje != " ")
         $("#contenedor-mensaje").show().fadeOut(5000);*/
-    $("#contenedor-mensaje").show().fadeOut(5000)
+    $("#contenedor-mensaje").show().fadeOut(7000)
     new WOW().init();
     $('li.nav-item').click(function(){
         $('li.nav-item').removeClass("active");
