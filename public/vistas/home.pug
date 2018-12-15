@@ -41,19 +41,22 @@ header
         li.nav-item
           a.nav-link(href='#contacto') Contacto
       // /.Links
-      // Formulario de inicio de sesión
-      #contenedor-formulario
-        form#formulario-login.form-inline.my-2.my-lg-0.ml-auto(action='/signin' method='POST')
-          input.form-control.mr-sm-2(name='correo' type='text' placeholder='Correo electrónico' aria-label='Correo electrónico')
-          input.form-control.mr-sm-2(name='contrasena' type='password' placeholder='Contraseña' aria-label='Contraseña')
-          button#sesion.btn.btn-primary.my-2.my-sm-0(type='submit') Iniciar Sesi&oacute;n
-      // /.Formulario de inicio de sesión
-      // Regístrate
-      div.row
-        .col-12
-          span#texto-registrarse &iquest;Todav&iacute;a no tienes cuenta?
-        .col-12
-          a.text-registrarse(href='#' data-toggle='modal' data-target='#modalRegisterForm') &iexcl;Reg&iacute;strate!
+    
+      ul.navbar-nav.nav-flex-icons
+        li.nav-item
+          a.nav-link.waves-effect(href="/dashboard") 
+            i.fa.fa-home.ml-1
+            span Dashboard
+
+        li.nav-item
+          a.nav-link.waves-effect(href="/perfil")
+            i.fa.fa-user.ml-1
+            span Perfil
+        li.nav-item
+          a(href="/logout" class="nav-link waves-effect") 
+            i.fa.fa-sign-out.ml-1
+            span Cerrar sesión
+
       // /.Regístrate
     // /.Contenido colapsable
   // /.Navbar

@@ -33,16 +33,11 @@ html(lang="en")
 
                         div.collapse.navbar-collapse#navbarSupportedContent
 
-                            ul.navbar-nav.mr-auto
-                                li.nav-item.active
-                                    a.nav-link.waves-effect(href="/") 
-                                        i.fa.fa-home.ml-1
-                                        span Inicio
+                            block links
 
-                                li.nav-item
-                                    a.nav-link.waves-effect(href="#")
-                                        i.fa.fa-user.ml-1
-                                        span Perfil
+
+                                
+                                
 
                             ul.navbar-nav.nav-flex-icons
                                 li.nav-item
@@ -50,7 +45,7 @@ html(lang="en")
                                         i.fa.fa-sign-out.ml-1
             block sidebar
                     div.sidebar-fixed.position-fixed(style="background-color: #144a5d")
-                        a.logo-wrapper.waves-effect
+                        a.logo-wrapper.waves-effect(href="/")
                             img(src="img/Logo.png" height="80")
 
                         div.list-group.list-group-flush.wow.fadeIn

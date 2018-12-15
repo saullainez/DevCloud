@@ -1,6 +1,9 @@
 const middlewares = require('../middlewares');
 module.exports = function (app, passport) {
-    app.get("/",  function (req, res, next) {
+    app.get("/", middlewares.paginaInicio,  function (req, res) {
+        /*if (req.session.user)
+            res.render('home');
+        res.render('index');*/
         res.render('index');
     });
 

@@ -1,4 +1,14 @@
 extends layout
+block links
+    ul.navbar-nav.mr-auto
+        li.nav-item.active
+            a.nav-link.waves-effect(href="/dashboard") 
+                i.fa.fa-home.ml-1
+                span Inicio
+        li.nav-item
+            a.nav-link.waves-effect(href="/perfil")
+                i.fa.fa-user.ml-1
+                span Perfil
 block contenido
   if (message && message.length > 0) 
     div.alert.alert-success.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message} Bienvenido(a) #{nombreUsuario}
