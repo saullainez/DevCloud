@@ -20,6 +20,14 @@ block contenido
                 input.form-control#form-nombre(name="nombre" type="text")
                 label(for="form-nombre") Nombre
             div.md-form.mb-5
+                i.fa.fa-user.prefix.grey-text
+                input.form-control#form-apellido(name="apellido" type="text")
+                label(for="form-apellido") Apellido
+            div.md-form.mb-5
+                i.fa.fa-user-circle.prefix.grey-text
+                input.form-control#form-alias(name="alias" type="text")
+                label(for="form-alias") Alias
+            div.md-form.mb-5
                 i.fa.fa-envelope.prefix.grey-text
                 input.form-control.correo#form-email(name="correo" type="email")
                 label(data-error="Correo electrónico inválido" data-success="Correcto" for="form-email") Correo electrónico
@@ -37,6 +45,13 @@ block contenido
             div.alert.alert-success.alert-dismissible.fade.show#contrasena-igual(style="display:none;" role="alert")
                 button.close(type="button" data-dismiss="alert" aria-label="Close")
                     span(aria-hidden="true") &times;
+                        div.md-form.mb-5
+            div.md-form.mb-5
+                h6(style="text-align:center") Seleccione un plan
+                select.browser-default.custom-select(name="idPlan" id="idPlan")
+                    option(selected value = "1") Gratis
+                    option(value = "2") Básico
+                    option(value = "3") Avanzado
             div(style="text-align: center;")
                 button.btn.btn-primary#registrarse(type="submit" disabled) Registrarse
 

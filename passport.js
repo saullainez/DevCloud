@@ -47,8 +47,8 @@ module.exports = function (app, passport) {
                     if (data.length == 1)
                         return done();
                     else {
-                        bdconexion.query("INSERT INTO usuarios (Nombre, contrasena, correo) VALUES (?,SHA1(?),?)",
-                            [req.body.nombre, contrasena, correo],
+                        bdconexion.query("INSERT INTO usuarios (Nombre, contrasena, correo, apellido, alias, idPlan) VALUES (?,SHA1(?),?,?,?,?)",
+                            [req.body.nombre, contrasena, correo, req.body.apellido, req.body.alias, req.body.idPlan],
                             function (error, data, fields) {
                                 if (error) {
                                     return done(error);

@@ -401,6 +401,14 @@ main
               input#form-nombre.form-control(name='nombre' type='text')
               label(for='form-nombre') Nombre
             .md-form.mb-5
+              i.fa.fa-user.prefix.grey-text
+              input.form-control#form-apellido(name='apellido' type='text')
+              label(for="form-apellido") Apellido
+            .md-form.mb-5
+              i.fa.fa-user-circle.prefix.grey-text
+              input.form-control#form-alias(name='alias' type='text')
+              label(for="form-alias") Alias
+            .md-form.mb-5
               i.fa.fa-envelope.prefix.grey-text
               input#form-email.form-control.correo(name='correo' type='email')
               label(data-error='Correo electrónico inválido' data-success='Correcto' for='form-email') Email
@@ -422,7 +430,15 @@ main
             #contrasena-igual.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert')
               button.close(type='button' data-dismiss='alert' aria-label='Close')
                 span(aria-hidden='true') &times;
-        .modal-footer.d-flex.justify-content-center
+            .md-form.mb-5
+              h6(style="text-align:center") Seleccione un plan
+              select.browser-default.custom-select(name='idPlan')
+                option(selected value = "1") Gratis
+                option(value = "2") Básico
+                option(value = "3") Avanzado
+            div(style="text-align: center;")
+              button#registrarse.btn.btn-primary(type='submit' disabled='') Registrarse
+        //.modal-footer.d-flex.justify-content-center
           button#registrarse.btn.btn-primary(type='submit' disabled='') Registrarse
   // Modal Registro
   // /.Modales

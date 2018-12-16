@@ -1,9 +1,7 @@
 const middlewares = require('../middlewares');
+var bdconexion = require('../bd/bdconfig');
 module.exports = function (app, passport) {
     app.get("/", middlewares.paginaInicio,  function (req, res) {
-        /*if (req.session.user)
-            res.render('home');
-        res.render('index');*/
         res.render('index');
     });
 
@@ -60,14 +58,46 @@ module.exports = function (app, passport) {
         res.render('dashboard', { nombreUsuario: nombreUsuario, message: req.flash('message') });
     });
     app.get('/perfil', middlewares.isAuthenticated, function (req, res, netx) {
-        var nombreUsuario = req.session.user.Nombre;
-        res.render('perfil', { nombreUsuario: nombreUsuario, message: req.flash('mensaje-login') });
+        //console.log("Get perfil");
+        var nombreUsuario = req.session.user.nombre;
+        var apellidoUsuario = req.session.user.apellido;
+        var aliasUsuario = req.session.user.alias;
+        res.render('perfil', { 
+            nombreUsuario: nombreUsuario, 
+            apellidoUsuario: apellidoUsuario, 
+            aliasUsuario: aliasUsuario,
+            message: req.flash('mensaje-login') });
     });
 
     app.get('/logout', function (req, res) {
         req.session.destroy();
         req.logout();
         res.redirect('/signin');
+    });
+
+    app.get("/datosperfil", middlewares.isAuthenticated, function(req, res,next){
+        bdconexion.query(`select a.nombre, a.apellido, a.correo, a.alias,
+                        b.tipo, b.proyectosPlan
+                        from usuarios a
+                        inner join plan b
+                        on(a.idPlan = b.idPlan)
+                        where a.Id = ?;`,
+                        [req.session.user.Id],
+                        function(error, data, fields){
+                            if(error) res.send(error);
+                            res.send(data);
+                            res.end();
+                        });
+    });
+
+    app.post("/datosperfil", function(req, res){
+        bdconexion.query(`update usuarios set correo = ?, alias = ? where Id = ?;`,
+        [req.body.correo, req.body.alias, req.session.user.Id],
+        function(error, data, fields){
+            if(error) res.send(error);
+            res.send(data);
+            res.end();
+        })
     });
 
 }

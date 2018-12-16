@@ -21,25 +21,62 @@ block contenido
         div.col-md-6.mb-4
             div.card
                 div.card-body
-                    h4(style="text-align:center;") #{nombreUsuario}
+                    h4(style="text-align:center;" id="nombreApellido") #{nombreUsuario} #{apellidoUsuario}
                     hr
                     ul.list-group-flush(style="padding-left: 5px;")
                         li.list-group-item
                             p.mb-0
                             i.fa.fa-user.fa-2x.mr-2.blue.p-3.white-text.rounded 
-                            span.cb-perfil Nickname:
-                            span.el-perfil Saul
+                            //span.cb-perfil Alias:
+                            //span.el-perfil#alias #{aliasUsuario}
+                            span.cb-perfil Alias:
+                            span.el-perfil#alias(style="margin-left: -1rem;") #{aliasUsuario}
 
                         li.list-group-item
                             p.mb-0
-                            i.fa.fa-university.fa-2x.mr-2.p-3.white-text.rounded.red
-                            span.cb-perfil Universidad:
-                            span.el-perfil(style="margin-left: -2.3rem;") UNAH
+                            i.fa.fa-at.fa-2x.mr-2.p-3.white-text.rounded.red
+                            span.cb-perfil Correo:
+                            span.el-perfil#correo(style="margin-left: -2.3rem;") 
                         li.list-group-item
                             p.mb-0
                             i.fa.fa-database.fa-2x.mr-2.p-3.white-text.rounded(style="background-color: #144a5d !important;")
                             span.cb-perfil Plan:
-                            span.el-perfil(style="margin-left: 2rem;") Gratis
+                            span.el-perfil#plan(style="margin-left: -0.7rem;") 
+                    div#actualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Usuario actualizado correctamente
+                        button.close(type='button' data-dismiss='alert' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                div.card-footer(style="text-align: center;")
+                    button.btn.btn-primary.waves-effect.waves-light(type="button" data-toggle="modal" data-target="#centralModalInfo") Editar
+    div.modal.fade#centralModalInfo(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead#tituloModal
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-edit.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.mb-5
+                                i.fa.fa-user-circle.prefix.grey-text
+                                label(for="nuevoAlias") Alias
+                                input.form-control#nuevoAlias(name="alias" type="text")
+                            div.mb-5
+                                i.fa.fa-envelope.prefix.grey-text
+                                label(data-error="Correo electrónico inválido" data-success="Correcto" for="nuevoCorreo") Correo electrónico
+                                input.form-control.correo#nuevoCorreo(name="correo" type="email")
+                                                              
+                div.modal-footer.justify-content-center
+                    a.btn.btn-primary(type="button" id="Actualizar" data-dismiss="modal") Guardar
+
+block scripts   
+    script(type="text/javascript" src="js/jquery-3.3.1.min.js")
+    script(type="text/javascript" src="js/bootstrap.min.js")
+    script(type="text/javascript" src="js/mdb.min.js")
+    script(type="text/javascript" src="js/activar.js")
+    script(type="text/javascript" src="js/perfil.js")
+    script(type="text/javascript" src="js/validaciones.js")
                             
                             
 

@@ -25,11 +25,19 @@
     background-color: rgba(0, 0, 0, 0.62);
     color: #ffffff;
     width: 497px;
-    height: 651px;
+    height: 850px;
     border-radius: 8px;
     padding: 1rem 4rem 3rem 4rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+.modal-dialog.modal-notify.modal-info .modal-header {
+    background-color: #195c73 !important;
+}
+
+.modal-dialog.modal-notify.modal-info .fa {
+    color: #117b82 !important;
 }
 
 
