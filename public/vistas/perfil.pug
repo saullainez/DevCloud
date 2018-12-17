@@ -14,9 +14,17 @@ block contenido
         div.alert.alert-success.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message}, #{nombreUsuario}!
             button.close(type="button" data-dismiss="alert" aria-label="Close")
                 span(aria-hidden="true") &times;
+
+
     div.card.mb-4.wow.fadeIn
         div.card-body.d-sm-flex.justify-content-between
             h3.mb-2.mb-sm-0.pt-1 Perfil de usuario
+    div#actualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Usuario actualizado correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
+    div#planActualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Plan actualizado correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
     div.row.wow.fadeIn
         div.col-md-6.mb-4
             div.card
@@ -40,11 +48,15 @@ block contenido
                             i.fa.fa-database.fa-2x.mr-2.p-3.white-text.rounded(style="background-color: #144a5d !important;")
                             span.cb-perfil Plan:
                             span.el-perfil#plan(style="margin-left: -0.7rem;") 
-                    div#actualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Usuario actualizado correctamente
-                        button.close(type='button' data-dismiss='alert' aria-label='Close')
-                            span(aria-hidden='true') &times;
+                            button.btn.btn-primary.waves-effect.waves-light(type='button' data-toggle="modal" data-target="#editarPlan") Actualizar plan
                 div.card-footer(style="text-align: center;")
                     button.btn.btn-primary.waves-effect.waves-light(type="button" data-toggle="modal" data-target="#centralModalInfo") Editar
+        div.card.-md-6-md-4 
+            div.card-body
+                div.list-group.list-group-flush
+                    a.list-group-itemlist-group-item-action.waves-effect Proyectos
+                        span.badge.badge-success.badge-pill.pull-right 3
+
     div.modal.fade#centralModalInfo(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
         div.modal-dialog.modal-notify.modal-info(role="document")
             div.modal-content
@@ -67,6 +79,25 @@ block contenido
                                                               
                 div.modal-footer.justify-content-center
                     a.btn.btn-primary(type="button" id="Actualizar" data-dismiss="modal") Guardar
+    div.modal.fade#editarPlan(tabindex="-1" role="dialog" aria-labelledby="editarPlanlLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead#tituloModal
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-edit.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.md-form.mb-5
+                                h6(style="text-align:center") Seleccione un plan
+                                select.browser-default.custom-select(id='nuevoPlan')
+                                    option(selected value = "1") Gratis
+                                    option(value = "2") Básico
+                                    option(value = "3") Avanzado                                             
+                div.modal-footer.justify-content-center
+                    a.btn.btn-primary(type="button" id="actualizarPlan" data-dismiss="modal") Guardar
 
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")

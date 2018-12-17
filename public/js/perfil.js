@@ -39,8 +39,30 @@ function actualizarDatosPerfil() {
         }
     });
 }
+function actualizarPlan() {
+    var data = {
+        plan: $("#nuevoPlan").val()
+    };
+    $.ajax({
+        url: `/actualizarplan`,
+        method: "POST",
+        data:data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#planActualizado").show().fadeOut(3000);
+            cargarDatosPerfil();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
 cargarDatosPerfil();
 $("#Actualizar").click(function() {
     actualizarDatosPerfil();
     //$("#centralModalInfo").modal("close");
   });
+$("#actualizarPlan").click(function() {
+    actualizarPlan();
+});

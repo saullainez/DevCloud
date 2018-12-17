@@ -100,4 +100,15 @@ module.exports = function (app, passport) {
         })
     });
 
+    app.post("/actualizarplan", function(req, res){
+        console.log(req.body.plan);
+        bdconexion.query(`update usuarios set idPlan = ? where Id = ?`,
+        [req.body.plan, req.session.user.Id],
+        function(error, data, fields){
+            if (error) res.send(error);
+            res.send(data);
+            res.end();
+        })
+    });
+
 }
