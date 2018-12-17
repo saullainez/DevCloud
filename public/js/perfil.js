@@ -30,7 +30,8 @@ function actualizarDatosPerfil() {
         dataType: "json",
         success: function (res) {
             console.log(res);
-            $("#actualizado").show();
+            //$("#actualizado").show();
+            $("#actualizado").show().fadeOut(3000);
             cargarDatosPerfil();
         },
         error: function (error) {
