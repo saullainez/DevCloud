@@ -17,10 +17,16 @@ block contenido
   div.card.mb-4.wow.fadeIn
     div.card-body.d-sm-flex.justify-content-between
       h3.mb-2.mb-sm-0.pt-1 Proyectos
+  div.alert.alert-danger.alert-dismissible.fade.show#limite(style="display:none;" role="alert") Límite de proyectos alcanzado
+    button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
   div#proyectoActualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Proyecto actualizado correctamente
     button.close(type='button' data-dismiss='alert' aria-label='Close')
         span(aria-hidden='true') &times;
   div#proyectoCreado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Proyecto creado correctamente
+    button.close(type='button' data-dismiss='alert' aria-label='Close')
+        span(aria-hidden='true') &times;
+  div#proyectoEliminado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Proyecto eliminado correctamente
     button.close(type='button' data-dismiss='alert' aria-label='Close')
         span(aria-hidden='true') &times;
   div.row.wow.fadeIn
@@ -29,14 +35,19 @@ block contenido
             //h4 Proyectos
             div.row 
                 div.lg-6
-                    div.list-group.list-group-flush
+                    div.list-group.list-group-flush(style="position: relative; top: -0.1rem;")
                         h5.list-group-itemlist-group-item-action.waves-effect(style="margin-left: 3rem;") Proyectos creados:
                             span.badge.badge-success.badge-pill.pull-right#proyectosCreados 
-                div.lg-6
-                    div.list-group.list-group-flush(style="margin-left: 26rem;")
+                //div.lg-3 
+                    div.alert.alert-danger.alert-dismissible.fade.show#limite(role="alert")(style="margin-left: 23rem;") Límite de proyectos alcanzado
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") &times;
+                div.lg-3
+                    div.list-group.list-group-flush#nP(style="margin-left: 28rem; position:relative; top: -0.3rem;")
                         h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearProyecto" style="margin-left: 3rem;") 
                             span(style="position: relative; top: -0.3rem;") Nuevo proyecto
                             i.fa.fa-plus-circle(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
+            hr
                             
                             
             div.row#tarjetas
@@ -84,6 +95,17 @@ block contenido
                                                               
                 div.modal-footer.justify-content-center
                     button.btn.btn-primary(onclick="crearProyecto()" data-dismiss="modal") Guardar
+  div.modal.fade#modalConfirmarBorrado( tabindex="-1" role="dialog" aria-labelledby="modalConfirmarBorradoLabel" aria-hidden="true")
+    div.modal-dialog.modal-sm.modal-notify.modal-danger(role="document")
+        div.modal-content.text-center
+            div.modal-header.d-flex.justify-content-center
+                p.heading ¿Seguro(a) que desea borrar?
+            div.modal-body
+                i.fa.fa-times.fa-4x.animated.rotateIn
+            div.modal-footer.flex-center
+                a.btn.btn-outline-danger#borrarProyecto(data-dismiss="modal") Sí
+                a.btn.btn-danger.waves-effect(data-dismiss="modal") No
+    
 
               
 block scripts   

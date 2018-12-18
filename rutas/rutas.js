@@ -135,13 +135,27 @@ module.exports = function (app, passport) {
     app.post("/crearproyectos", function (req, res) {
         bdconexion.query(`insert into proyectos (nombreProyecto, descripcionProyecto, idUsuario) values (?, ?, ?)`,
             [req.body.nombreProyecto, req.body.descProyecto, req.session.user.Id],
-            //[req.body.nombreProyecto, req.body.descProyecto, req.body.idUsuario],
             function (error, data, fields) {
                 if (error) res.send(error);
                 console.log(data);
                 res.send(data);
                 res.end();
             })
+    });
+
+    app.post("/eliminarproyecto", function (req, res) {
+        bdconexion.query(`delete from proyectos where idProyecto = ?`,
+            [req.body.idProyecto],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                console.log(data);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.get("/proyecto/:idProyecto", middlewares.isAuthenticated, function(req, res){
+        res.send(req.params.idProyecto);
     });
 
 }

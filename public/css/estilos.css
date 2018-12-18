@@ -72,7 +72,13 @@
 
 .card .activator {
     position: absolute;
-    right: 0;
+    right: 1.4rem;
+    font-size: 1.2rem;
+}
+
+.card .icono-borrar{
+    position: absolute;
+    right: -0.5rem;
     font-size: 1.2rem;
 }
 
