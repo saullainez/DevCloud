@@ -71,7 +71,6 @@ $(document).ready(function () {
             success: function (res) {
                 console.log(res);
                 $("#planActualizado").show().fadeOut(3000);
-                //$("#proyectosDisp").append(" ");
                 cargarDatosPerfil();
             },
             error: function (error) {

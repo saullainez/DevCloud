@@ -50,6 +50,36 @@
     background-color: #3a83c3;
 }
 
+.texto-tarjeta{
+    font-size: 1rem !important;
+    color: antiquewhite;
+}
+
+.titulo-tarjeta{
+    text-align: center;
+    color: floralwhite;
+}
+
+.cuerpo-tarjeta{
+    background-color: #17406d !important;
+}
+
+.divisor-tarjeta{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: #6ca9e7;
+}
+
+.card .activator {
+    position: absolute;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+
+
+
+
 .titulo-slide{
     font-size: 4.5rem !important;
 }

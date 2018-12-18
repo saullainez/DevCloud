@@ -16,8 +16,76 @@ block contenido
         span(aria-hidden="true") &times;
   div.card.mb-4.wow.fadeIn
     div.card-body.d-sm-flex.justify-content-between
-      h3.mb-2.mb-sm-0.pt-1 Dashboard
-        //h3= "Bienvenido " + nombreUsuario 
+      h3.mb-2.mb-sm-0.pt-1 Proyectos
+  div#proyectoActualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Proyecto actualizado correctamente
+    button.close(type='button' data-dismiss='alert' aria-label='Close')
+        span(aria-hidden='true') &times;
+  div#proyectoCreado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Proyecto creado correctamente
+    button.close(type='button' data-dismiss='alert' aria-label='Close')
+        span(aria-hidden='true') &times;
+  div.row.wow.fadeIn
+    div.card(style="padding-bottom: 0rem !important; width:100%")
+        div.card-body(style="padding-bottom: 0rem !important;")
+            //h4 Proyectos
+            div.row 
+                div.lg-6
+                    div.list-group.list-group-flush
+                        h5.list-group-itemlist-group-item-action.waves-effect(style="margin-left: 3rem;") Proyectos creados:
+                            span.badge.badge-success.badge-pill.pull-right#proyectosCreados 
+                div.lg-6
+                    div.list-group.list-group-flush(style="margin-left: 26rem;")
+                        h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearProyecto" style="margin-left: 3rem;") 
+                            span(style="position: relative; top: -0.3rem;") Nuevo proyecto
+                            i.fa.fa-plus-circle(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
+                            
+                            
+            div.row#tarjetas
+  div.modal.fade#editarProyecto(tabindex="-1" role="dialog" aria-labelledby="editarProyectoLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead#tituloModalEditar
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-edit.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.mb-5
+                                i.fa.fa-user-circle.prefix.grey-text
+                                label(for="nuevoNombre" required) Nombre
+                                input.form-control#nuevoNombre(type="text")
+                            div.mb-5
+                                i.fa.fa-envelope.prefix.grey-text
+                                label(for="nuevaDesc" required) Descripción
+                                input.form-control.correo#nuevaDesc(type="text")
+                                                              
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary(id="actualizarProyecto" data-dismiss="modal") Guardar
+  div.modal.fade#crearProyecto(tabindex="-1" role="dialog" aria-labelledby="crearProyectoLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead Crear proyecto
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-plus-circle.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.mb-5
+                                i.fa.fa-user-circle.prefix.grey-text
+                                label(for="nombreProyecto" required) Nombre
+                                input.form-control#nombreProyecto(type="text")
+                            div.mb-5
+                                i.fa.fa-envelope.prefix.grey-text
+                                label(for="descProyecto" required) Descripción
+                                input.form-control.correo#descProyecto(type="text")
+                                                              
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary(onclick="crearProyecto()" data-dismiss="modal") Guardar
+
+              
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")
     script(type="text/javascript" src="js/bootstrap.min.js")

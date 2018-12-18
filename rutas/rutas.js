@@ -1,7 +1,7 @@
 const middlewares = require('../middlewares');
 var bdconexion = require('../bd/bdconfig');
 module.exports = function (app, passport) {
-    app.get("/", middlewares.paginaInicio,  function (req, res) {
+    app.get("/", middlewares.paginaInicio, function (req, res) {
         res.render('index');
     });
 
@@ -62,11 +62,12 @@ module.exports = function (app, passport) {
         var nombreUsuario = req.session.user.nombre;
         var apellidoUsuario = req.session.user.apellido;
         var aliasUsuario = req.session.user.alias;
-        res.render('perfil', { 
-            nombreUsuario: nombreUsuario, 
-            apellidoUsuario: apellidoUsuario, 
+        res.render('perfil', {
+            nombreUsuario: nombreUsuario,
+            apellidoUsuario: apellidoUsuario,
             aliasUsuario: aliasUsuario,
-            message: req.flash('mensaje-login') });
+            message: req.flash('mensaje-login')
+        });
     });
 
     app.get('/logout', function (req, res) {
@@ -75,49 +76,72 @@ module.exports = function (app, passport) {
         res.redirect('/signin');
     });
 
-    app.get("/datosperfil", middlewares.isAuthenticated, function(req, res,next){
+    app.get("/datosperfil", middlewares.isAuthenticated, function (req, res, next) {
         bdconexion.query(`select a.nombre, a.apellido, a.correo, a.alias,
                         b.tipo, b.proyectosPlan
                         from usuarios a
                         inner join plan b
                         on(a.idPlan = b.idPlan)
                         where a.Id = ?;`,
-                        [req.session.user.Id],
-                        function(error, data, fields){
-                            if(error) res.send(error);
-                            res.send(data);
-                            res.end();
-                        });
+            [req.session.user.Id],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            });
     });
 
-    app.post("/datosperfil", function(req, res){
+    app.post("/datosperfil", function (req, res) {
         bdconexion.query(`update usuarios set correo = ?, alias = ? where Id = ?;`,
-        [req.body.correo, req.body.alias, req.session.user.Id],
-        function(error, data, fields){
-            if(error) res.send(error);
-            res.send(data);
-            res.end();
-        })
+            [req.body.correo, req.body.alias, req.session.user.Id],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
     });
 
-    app.post("/actualizarplan", function(req, res){
+    app.post("/actualizarplan", function (req, res) {
         bdconexion.query(`update usuarios set idPlan = ? where Id = ?`,
-        [req.body.plan, req.session.user.Id],
-        function(error, data, fields){
-            if (error) res.send(error);
-            res.send(data);
-            res.end();
-        })
+            [req.body.plan, req.session.user.Id],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
     });
 
-    app.get("/obtenerproyectos", middlewares.isAuthenticated, function(req, res){
+    app.get("/obtenerproyectos", middlewares.isAuthenticated, function (req, res) {
         bdconexion.query(`select idProyecto, nombreProyecto, descripcionProyecto from proyectos where idUsuario = ?`,
-        [req.session.user.Id],
-        function(error, data, fields){
-            if (error) res.send(error);
-            res.send(data);
-            res.end();
-        })
+            [req.session.user.Id],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.post("/actualizarproyectos", function (req, res) {
+        bdconexion.query(`update proyectos set nombreProyecto = ?, descripcionProyecto = ? where idProyecto = ?`,
+            [req.body.nuevoNombre, req.body.nuevaDesc, req.body.idProyecto],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                console.log(data);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.post("/crearproyectos", function (req, res) {
+        bdconexion.query(`insert into proyectos (nombreProyecto, descripcionProyecto, idUsuario) values (?, ?, ?)`,
+            [req.body.nombreProyecto, req.body.descProyecto, req.session.user.Id],
+            //[req.body.nombreProyecto, req.body.descProyecto, req.body.idUsuario],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                console.log(data);
+                res.send(data);
+                res.end();
+            })
     });
 
 }
