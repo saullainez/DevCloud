@@ -1,12 +1,13 @@
 $(document).ready(function () {
-    $("#sdPerfil").addClass( "active");
+    $("#sdPerfil").addClass("active");
+    var proyectosUsuario;
     function cargarDatosPerfil() {
         $.ajax({
             url: `/datosperfil`,
             method: "GET",
             dataType: "json",
             success: function (res) {
-                var planConsumido = (19 / res[0].proyectosPlan) * 100;
+                var planConsumido = (proyectosUsuario / res[0].proyectosPlan) * 100;
                 console.log(res);
                 $("#nombreApellido").text(res[0].nombre + " " + res[0].apellido);
                 $("#alias").text(res[0].alias);
@@ -79,7 +80,24 @@ $(document).ready(function () {
         });
     }
 
+    function cargarProyectos() {
+        $.ajax({
+            url: `/obtenerproyectos`,
+            method: "GET",
+            dataType: "json",
+            success: function (res) {
+                proyectosUsuario = res.length;
+                $("#proyectosGuard").text(proyectosUsuario);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    cargarProyectos();
     cargarDatosPerfil();
+    
     $("#Actualizar").click(function () {
         actualizarDatosPerfil();
         //$("#centralModalInfo").modal("close");
