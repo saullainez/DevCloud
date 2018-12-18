@@ -26,9 +26,9 @@ block contenido
         button.close(type='button' data-dismiss='alert' aria-label='Close')
             span(aria-hidden='true') &times;
     div.row.wow.fadeIn
-        div.col-md-6.mb-4
-            div.card
-                div.card-body
+        div.col-lg-7.col-md-7.mb-4.col-sm-12
+            div.card(style="padding-bottom: 0rem !important;")
+                div.card-body(style="padding-bottom: 0rem !important;")
                     h4(style="text-align:center;" id="nombreApellido") 
                     hr
                     ul.list-group-flush(style="padding-left: 5px;")
@@ -49,13 +49,28 @@ block contenido
                             span.cb-perfil Plan:
                             span.el-perfil#plan(style="margin-left: -0.7rem;") 
                             button.btn.btn-primary.waves-effect.waves-light(type='button' data-toggle="modal" data-target="#editarPlan") Actualizar plan
-                div.card-footer(style="text-align: center;")
+                div.card-footer(style="text-align: center; padding-top: 0rem !important; padding-bottom: 0rem !important;")
                     button.btn.btn-primary.waves-effect.waves-light(type="button" data-toggle="modal" data-target="#centralModalInfo") Editar
-        div.card.-md-6-md-4 
-            div.card-body
-                div.list-group.list-group-flush
-                    a.list-group-itemlist-group-item-action.waves-effect Proyectos
-                        span.badge.badge-success.badge-pill.pull-right 3
+        div.col-lg-5.col-md-5.col-sm-12
+            div.card(style="height: 25.78rem;")
+                div.card-body
+                    h4(style="text-align:center;") Proyectos
+                    hr
+                    div.list-group.list-group-flush
+                        h5.list-group-itemlist-group-item-action.waves-effect Proyectos que permite el plan:
+                            span.badge.badge-success.badge-pill.pull-right#proyectosDisp 
+                    hr.divisor
+                    div.list-group.list-group-flush
+                        h5.list-group-itemlist-group-item-action.waves-effect Proyectos guardados:
+                            span.badge.badge-success.badge-pill.pull-right#proyectosGuard 3 
+                    hr.divisor
+                    div.list-group.list-group-flush
+                        h5.list-group-itemlist-group-item-action.waves-effect Procentaje del plan consumido:
+                            span.badge.badge-pill.pull-right#planConsumido 
+                        div.progress
+                            div.progress-bar#barra(role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100")
+                div.card-footer(style="text-align: center; padding-top: 0rem !important; padding-bottom: 0rem !important;")
+                    a.btn.btn-primary.waves-effect.waves-light(href="/dashboard") Ver proyectos
 
     div.modal.fade#centralModalInfo(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
         div.modal-dialog.modal-notify.modal-info(role="document")
@@ -78,7 +93,7 @@ block contenido
                                 input.form-control.correo#nuevoCorreo(name="correo" type="email")
                                                               
                 div.modal-footer.justify-content-center
-                    a.btn.btn-primary(type="button" id="Actualizar" data-dismiss="modal") Guardar
+                    a.btn.btn-primary(id="Actualizar" data-dismiss="modal") Guardar
     div.modal.fade#editarPlan(tabindex="-1" role="dialog" aria-labelledby="editarPlanlLabel" aria-hidden="true")
         div.modal-dialog.modal-notify.modal-info(role="document")
             div.modal-content
@@ -97,7 +112,7 @@ block contenido
                                     option(value = "2") Básico
                                     option(value = "3") Avanzado                                             
                 div.modal-footer.justify-content-center
-                    a.btn.btn-primary(type="button" id="actualizarPlan" data-dismiss="modal") Guardar
+                    a.btn.btn-primary(id="actualizarPlan" data-dismiss="modal") Guardar
 
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")

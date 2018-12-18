@@ -40,6 +40,15 @@
     color: #117b82 !important;
 }
 
+.badge {
+    font-size: 100% !important;
+    margin-left: 1rem !important;
+}
+
+.divisor{
+    width: 14rem;
+    background-color: #3a83c3;
+}
 
 .titulo-slide{
     font-size: 4.5rem !important;
