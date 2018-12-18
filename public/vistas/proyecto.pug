@@ -1,0 +1,68 @@
+extends layout
+block links
+    ul.navbar-nav.mr-auto
+        li.nav-item
+            a.nav-link.waves-effect(href="/dashboard") 
+                i.fa.fa-home.ml-1
+                span Inicio
+        li.nav-item
+            a.nav-link.waves-effect(href="/perfil")
+                i.fa.fa-user.ml-1
+                span Perfil
+        li.nav-item.active
+            a.nav-link.waves-effec(href="/#")
+                i.fa.fa-code.ml-1
+                span Proyecto 
+block sidebar
+    div.sidebar-fixed.position-fixed(style="background-color: #144a5d")
+        a.logo-wrapper.waves-effect(href="/")
+            img(src="img/Logo.png" height="80")
+        
+        //ul.collapsible.collapsible-accordion
+            li
+                a#sdDash(href="/Dashboard" class="list-group-item list-group-item-action waves-effect") 
+                    i.fa.fa-pie-chart.mr-3 
+                    span Dashboard
+            li
+                a#sdPerfil(href="/Perfil" class="list-group-item list-group-item-action waves-effect") 
+                    i.fa.fa-user-chart.mr-3 
+                    span Perfil
+
+
+        div.list-group.list-group-flush.wow.fadeIncollapsible.collapsible-accordion
+            a#sdDash(href="/Dashboard" class="list-group-item list-group-item-action waves-effect") 
+                i.fa.fa-pie-chart.mr-3 
+                span Dashboard
+            a#sdPerfil(href="/Perfil" class="list-group-item list-group-item-action waves-effect")
+                i.fa.fa-user.mr-4 
+                span Perfil
+            //a#sdPerfil.active(href="/#" class="list-group-item list-group-item-action waves-effect")
+                i.fa.fa-code.mr-4 
+                span Proyecto
+            a.list-group-item.list-group-item-action.waves-effect.active(data-toggle="collapse" data-target="#carpetas")
+                i.fa.fa-chevron-right(style="margin-right: 1.5rem!important;")
+                span(style="color:white;") Proyecto
+                i.fa.fa-angle-down.rotate-icon
+            div#carpetas(style=" background-color: #007bff;")
+                //a.waves-effect.list-group-item.list-group-item-action.waves-effect.carpeta(href="#") Carpeta1
+block contenido
+    if (message && message.length > 0) 
+        div.alert.alert-success.alert-dismissible.fade.show#contenedor-mensaje(style = "display:none;" role="alert") #{message} Bienvenido(a) #{nombreUsuario}
+            button.close(type="button" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true") &times;
+    div.card.mb-4.wow.fadeIn
+        div.card-body.d-sm-flex.justify-content-between
+            h3.mb-2.mb-sm-0.pt-1 Proyecto 
+    div.row.wow.fadeIn
+        div.card(style="padding-bottom: 0rem !important; width:100%")
+            div.card-body(style="padding-bottom: 0rem !important;")
+
+block scripts   
+    script(type="text/javascript" src="js/jquery-3.3.1.min.js")
+    script(type="text/javascript" src="js/bootstrap.min.js")
+    script(type="text/javascript" src="js/mdb.min.js")
+    script(type="text/javascript" src="js/activar.js")
+    script(type="text/javascript" src="js/proyecto.js")
+
+
+                

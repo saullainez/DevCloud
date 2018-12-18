@@ -50,7 +50,7 @@ function cargarProyectos() {
                         <hr class="divisor-tarjeta">
                         <p class="texto-tarjeta" id="descripcion${res[i].idProyecto}"> ${res[i].descripcionProyecto} </p>
                         <div style="text-align:center;">
-                            <a href="proyecto/${res[i].idProyecto}" id="${res[i].idProyecto}" class="btn btn-primary btn-md"> Ver proyecto </a>
+                            <a href="/proyecto/${res[i].idProyecto}" id="${res[i].idProyecto}" class="btn btn-primary btn-md"> Ver proyecto </a>
                         </div>
                     </div>
                 </div>`);

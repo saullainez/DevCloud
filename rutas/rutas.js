@@ -154,8 +154,31 @@ module.exports = function (app, passport) {
             })
     });
 
-    app.get("/proyecto/:idProyecto", middlewares.isAuthenticated, function(req, res){
-        res.send(req.params.idProyecto);
+
+    app.get("/proyecto/:id", middlewares.isAuthenticated, function(req, res){
+        req.session.idProyecto = req.params.id;
+        res.redirect("/proyecto");
+        //res.render("proyecto", {idProyecto: req.params.id});
     });
+
+    app.get("/proyecto", middlewares.isAuthenticated, function(req, res){
+        res.render("proyecto");
+    });
+
+    app.get("/obteneridproyecto", middlewares.isAuthenticated, function(req, res){
+        res.send(req.session.idProyecto);
+    });
+
+    app.get("/obtenercarpetas", middlewares.isAuthenticated, function(req, res){
+        //console.log(req.query.idProyecto);
+        bdconexion.query(`select idCarpeta, nombreCarpeta from carpetas where idProyecto = ?`,
+        [req.session.idProyecto],
+        function (error, data, fields) {
+            if (error) res.send(error);
+            res.send(data);
+            res.end();
+        })
+    });
+
 
 }

@@ -82,6 +82,19 @@
     font-size: 1.2rem;
 }
 
+.fa-angle-down.rotate-icon {
+    position: absolute;
+    right: 0;
+    top: .8rem;
+    margin-right: 1.25rem;
+}
+
+.carpeta{
+    background-color: #061f3a2e;
+    color: beige;
+    text-align: right;
+}
+
 
 
 
