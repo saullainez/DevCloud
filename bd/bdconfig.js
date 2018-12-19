@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 
 var credenciales = {
-    host:"localhost",
-    user:"root",
-    password:"",
+    host:"db4free.net ",
+    user:"saul10",
+    password:"dcExpertos2018",
     port:"3306",
     database: "devcloud"
 };
