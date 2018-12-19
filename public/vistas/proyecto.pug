@@ -53,9 +53,83 @@ block contenido
     div.card.mb-4.wow.fadeIn
         div.card-body.d-sm-flex.justify-content-between
             h3.mb-2.mb-sm-0.pt-1 Proyecto 
+    div#carpetaCreada.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Carpeta creada correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
+    div#carpetaActualizada.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Carpeta actualizada correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
+    div#carpetaEliminada.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Carpeta eliminada correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
     div.row.wow.fadeIn
         div.card(style="padding-bottom: 0rem !important; width:100%")
             div.card-body(style="padding-bottom: 0rem !important;")
+                div.row 
+                    div.lg-3
+                        div.list-group.list-group-flush(style="position: relative; top: -0.1rem; margin-left: 1.2rem;")
+                            h5.list-group-itemlist-group-item-action.waves-effect(style="margin-left: 1rem;") Carpetas creadas:
+                                span.badge.badge-success.badge-pill.pull-right#carpetasCreadas 
+                    div.lg-3
+                        div.list-group.list-group-flush(style="position: relative; top: 0rem; margin-left : 1rem;")
+                            h5.list-group-itemlist-group-item-action.waves-effect(style="margin-left: 2rem;") Archivos creados:
+                                span.badge.badge-success.badge-pill.pull-right#archivosCreados 10
+                    div.lg-3
+                        div.list-group.list-group-flush(style="margin-left: 13rem;")
+                            h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearCarpeta" style="margin-left: 3rem;") 
+                                //span(style="position: relative; top: -0.3rem;") Nueva carpeta
+                                i.fa.fa-folder(style="color: #053748!important; font-size: 2rem; margin-left: 1rem;")
+                                i.fa.fa-plus-circle(style="color: #053748!important; font-size: 2rem; margin-left: 1rem;")
+                    div.lg-3
+                        div.list-group.list-group-flush(style="margin-left: -2rem; position:relative; top: -0.2rem;")
+                            h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearCarpeta" style="margin-left: 3rem;") 
+                                //span(style="position: relative; top: -0.3rem;") Nuevo archivo
+                                i.fa.fa-file(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
+                                i.fa.fa-plus-circle(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
+                    hr
+    div.modal.fade#crearCarpeta(tabindex="-1" role="dialog" aria-labelledby="crearCarpetaLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead Crear carpeta
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-plus-circle.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.mb-5
+                                label(for="nombreCarpeta" required) Nombre
+                                input.form-control#nombreCarpeta(type="text")                                                              
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary(onclick="crearCarpeta()" data-dismiss="modal") Guardar
+    div.modal.fade#modalOpcionesCarpeta(tabindex="-1" role="dialog" aria-labelledby="modalOpcionesCarpetaLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead Opciones de carpeta
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-cog.fa-4x.mb-3.animated.rotateIn
+                        form
+                            div.mb-5
+                                label(for="nuevoCarpeta" required) Cambiar Nombre
+                                input.form-control#nuevoCarpeta(type="text")                                                              
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary#actualizarCarpeta(data-dismiss="modal") Editar
+                    button.btn.btn-danger#modalEliminarCarpeta(data-dismiss="modal") Eliminar
+    div.modal.fade#modalConfirmarBorrado( tabindex="-1" role="dialog" aria-labelledby="modalConfirmarBorradoLabel" aria-hidden="true")
+        div.modal-dialog.modal-sm.modal-notify.modal-danger(role="document")
+            div.modal-content.text-center
+                div.modal-header.d-flex.justify-content-center
+                    p.heading ¿Seguro(a) que desea borrar?
+                div.modal-body
+                    i.fa.fa-times.fa-4x.animated.rotateIn
+                div.modal-footer.flex-center
+                    a.btn.btn-outline-danger#borrarCarpeta(data-dismiss="modal") Sí
+                    a.btn.btn-danger.waves-effect(data-dismiss="modal") No
 
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")

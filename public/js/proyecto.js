@@ -1,3 +1,13 @@
+function modalOpcionesCarpeta(idCarpeta, nuevoCarpeta) {
+    $("#nuevoCarpeta").val(nuevoCarpeta);
+    $("#actualizarCarpeta").attr('onClick', `actualizarCarpeta(${idCarpeta})`);
+    $("#modalEliminarCarpeta").attr('onclick', `modalEliminarCarpeta(${idCarpeta})`);
+    $("#modalOpcionesCarpeta").modal();
+};
+function modalEliminarCarpeta(idCarpeta){
+    $("#borrarCarpeta").attr('onClick', `eliminarCarpeta(${idCarpeta})`);
+    $("#modalConfirmarBorrado").modal();
+};
 function cargarCarpetas() {
     $.ajax({
         url: `/obtenercarpetas`,
@@ -5,9 +15,12 @@ function cargarCarpetas() {
         dataType: "json",
         success: function (res) {
             $("#carpetas").html(" ");
+            $("#carpetasCreadas").text(res.length);
             for (var i = 0; i < res.length; i++){
-                $("#carpetas").append(`<a class = "waves-effect list-group-item list-group-item-action waves-effect carpeta" href=""> 
-                    <i class="fa fa-folder-open"></i>
+                $("#carpetas").append(`
+                <a class = "waves-effect list-group-item list-group-item-action waves-effect carpeta" style="color: beige;"> 
+                    <i onclick="modalOpcionesCarpeta(${res[i].idCarpeta}, '${res[i].nombreCarpeta}');" class="fa fa-cog" style="color: beige;"></i>
+                    <i class="fa fa-folder-open" style="color: beige;"></i>
                     ${res[i].nombreCarpeta} 
                 </a>`);
             }
@@ -44,6 +57,64 @@ function cargarCarpetas() {
         }
     });
 };
+function crearCarpeta() {
+    var data = {
+        nombreCarpeta: $("#nombreCarpeta").val()
+    };
+    $.ajax({
+        url: `/crearcarpeta`,
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#carpetaCreada").show().fadeOut(3000);
+            cargarCarpetas();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
+function actualizarCarpeta(id) {
+    var data = {
+        nombreCarpeta: $("#nuevoCarpeta").val(),
+        idCarpeta: id
+    };
+    $.ajax({
+        url: `/actualizarcarpeta`,
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#carpetaActualizada").show().fadeOut(3000);
+            cargarCarpetas();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
+function eliminarCarpeta(id) {
+    var data = {
+        idCarpeta: id
+    };
+    $.ajax({
+        url: `/eliminarcarpeta`,
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#carpetaEliminada").show().fadeOut(3000);
+            cargarCarpetas();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
 $(document).ready(function () {
     cargarCarpetas()
 })

@@ -179,6 +179,39 @@ module.exports = function (app, passport) {
             res.end();
         })
     });
+    app.post("/crearcarpeta", function(req, res){
+        bdconexion.query(`insert into carpetas (nombreCarpeta, idProyecto) values (?,?)`,
+        [req.body.nombreCarpeta, req.session.idProyecto],
+        function (error, data, fields) {
+            if (error) res.send(error);
+            res.send(data);
+            res.end();
+        })
+    });
+
+    app.post("/actualizarcarpeta", function (req, res) {
+        bdconexion.query(`update carpetas set nombreCarpeta = ? where idCarpeta = ?`,
+            [req.body.nombreCarpeta, req.body.idCarpeta],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                console.log(data);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.post("/eliminarcarpeta", function (req, res) {
+        bdconexion.query(`delete from carpetas where idCarpeta = ?`,
+            [req.body.idCarpeta],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                console.log(data);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    
 
 
 }

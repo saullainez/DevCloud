@@ -90,13 +90,15 @@
 }
 
 .carpeta{
-    background-color: #061f3a2e;
+    background-color: #fff0;
     color: beige;
     text-align: right;
 }
 
 
-
+.list-group-item-action:hover {
+    background-color: #fff0 !important;
+}
 
 
 .titulo-slide{
