@@ -105,6 +105,11 @@
     width: 28rem;
     height: 400px;
 }
+#editor1 {
+    position: absolute;
+    width: 28rem;
+    height: 400px;
+}
 .titulo-slide{
     font-size: 4.5rem !important;
 }

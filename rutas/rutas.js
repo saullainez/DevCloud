@@ -222,6 +222,7 @@ module.exports = function (app, passport) {
     });
 
     app.post("/creararchivo", function(req, res){
+        console.log(req.body.contenidoArchivo);
         bdconexion.query(`insert into archivos (nombreArchivo, tipoArchivo, contenidoArchivo, idCarpeta, idProyecto) values (?,?,?,?,?)`,
         [req.body.nombreArchivo, req.body.tipoArchivo, req.body.contenidoArchivo, req.body.idCarpeta, req.session.idProyecto],
         function (error, data, fields) {
@@ -229,6 +230,26 @@ module.exports = function (app, passport) {
             res.send(data);
             res.end();
         })
+    });
+
+    app.post("/actualizararchivo", function (req, res) {
+        bdconexion.query(`update archivos set nombreArchivo = ?, contenidoArchivo = ? where idArchivo = ?`,
+            [req.body.nuevoNombreArchivo, req.body.nuevoContenido, req.body.idArchivo],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.post("/eliminararchivo", function (req, res) {
+        bdconexion.query(`delete from archivos where idArchivo = ?`,
+            [req.body.idArchivo],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
     });
 
 

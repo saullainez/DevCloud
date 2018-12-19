@@ -8,6 +8,15 @@ function modalEliminarCarpeta(idCarpeta) {
     $("#borrarCarpeta").attr('onClick', `eliminarCarpeta(${idCarpeta})`);
     $("#modalConfirmarBorrado").modal();
 };
+function modalEditarArchivo(idArchivo, nombreArchivo){
+    $("#nuevoNombreArchivo").val(nombreArchivo);
+    $("#actualizarArchivo").attr('onclick', `actualizarArchivo(${idArchivo})`);
+    $("#editarArchivo").modal();
+}
+function modalEliminarArchivo(idArchivo){
+    $("#borrarArchivo").attr('onclick', `eliminarArchivo(${idArchivo})`);
+    $("#modalConfirmarBorrar").modal();
+}
 function cargarCarpetas() {
     $.ajax({
         url: `/obtenercarpetas`,
@@ -46,11 +55,15 @@ function cargarArchivos() {
         success: function (res) {
             $("#archivosCreados").text(res.length);
             $("#archivos").html(" ");
+            $("#nombreArchivo").val(" ");
+            //$("#editor>.ace_text-input").val(" ");
             for (var i = 0; i < res.length; i++) {
                 $("#archivos").append(`
                 <div class = "col-lg-4 mb-5">
                     <div class = "card" style="background-color: #033e5a;">
                         <div class="card-body">
+                            <a class="activator waves-effect mr-4" onclick="modalEditarArchivo(${res[i].idArchivo}, '${res[i].nombreArchivo}');"><i class="fa fa-edit white-text"></i></a>
+                            <a class="icono-borrar waves-effect mr-4" onclick="modalEliminarArchivo(${res[i].idArchivo});"><i class="fa fa-trash white-text"></i></a>
                             <h4 class="card-title" style="color: beige;"><a> ${res[i].nombreArchivo} </a></h4>
                             <hr style="background-color: beige;">
                             <span style="color:white"> Tipo: ${res[i].tipoArchivo} </span>
@@ -128,7 +141,7 @@ function crearArchivo() {
     var data = {
         nombreArchivo: $("#nombreArchivo").val(),
         tipoArchivo: $("#tipoArchivo").val(),
-        contenidoArchivo: $("#contenidoArchivo").val(),
+        contenidoArchivo: $(".ace_text-input").val(),
         idCarpeta: $("#idCarpeta").val()
     };
     $.ajax({
@@ -146,18 +159,55 @@ function crearArchivo() {
         }
     });
 }
+function actualizarArchivo(id) {
+    var data = {
+        nuevoNombreArchivo: $("#nuevoNombreArchivo").val(),
+        nuevoContenido: $("#editor1 .ace_text-input").val(),
+        idArchivo: id
+    };
+    $.ajax({
+        url: `/actualizararchivo`,
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#archivoActualizado").show().fadeOut(3000);
+            cargarArchivos();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
+function eliminarArchivo(id) {
+    var data = {
+        idArchivo: id
+    };
+    $.ajax({
+        url: `/eliminararchivo`,
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $("#archivoEliminado").show().fadeOut(3000);
+            cargarArchivos();
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
 $(document).ready(function () {
     cargarCarpetas();
     cargarArchivos();
-    $("#carpetas > a").each(function () {
-        alert("$(this).id()");
-    });
-
-
 
     var myCode;
     var editor = ace.edit("editor");
     $("#editor").show();
+    var editor1 = ace.edit("editor1");
+    $("#editor1").show();
 
     // var seleccionado=$("#sel-lan").val();
     ace.require("ace/ext/language_tools");

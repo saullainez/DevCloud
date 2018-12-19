@@ -65,6 +65,9 @@ block contenido
     div#archivoCreado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Archivo creado correctamente
         button.close(type='button' data-dismiss='alert' aria-label='Close')
             span(aria-hidden='true') &times;
+    div#archivoActualizado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Archivo actualizado correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
     div.row.wow.fadeIn
         div.card(style="padding-bottom: 0rem !important; width:100%")
             div.card-body(style="padding-bottom: 0rem !important;")
@@ -167,9 +170,40 @@ block contenido
                                 //textarea.form-control#contenidoArchivo(type="text" rows="20")   
                                 //textarea.form-control#editor(type="text" rows="20")
                                 div.form-control#editor
+                                    //textarea.form-control#contenidoArchivo(type="text" rows="20") 
                                                                                         
                 div.modal-footer.justify-content-center
                     button.btn.btn-primary(onclick="crearArchivo()" data-dismiss="modal") Guardar
+    div.modal.fade#editarArchivo(tabindex="-1" role="dialog" aria-labelledby="editarArchivoLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead Editar archivo
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-edit.fa-4x.mb-3.animated.rotateIn
+                        form(style="height: 35rem;")
+                            div.mb-5
+                                label(for="nuevoNombreArchivo" required) Nombre
+                                input.form-control#nuevoNombreArchivo(type="text")
+                            div.mb-5
+                                label(required) Contenido
+                                div.form-control#editor1
+                                                              
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary#actualizarArchivo(data-dismiss="modal") Guardar
+    div.modal.fade#modalConfirmarBorrar( tabindex="-1" role="dialog" aria-labelledby="modalConfirmarBorrarLabel" aria-hidden="true")
+        div.modal-dialog.modal-sm.modal-notify.modal-danger(role="document")
+            div.modal-content.text-center
+                div.modal-header.d-flex.justify-content-center
+                    p.heading ¿Seguro(a) que desea borrar?
+                div.modal-body
+                    i.fa.fa-times.fa-4x.animated.rotateIn
+                div.modal-footer.flex-center
+                    a.btn.btn-outline-danger#borrarArchivo(data-dismiss="modal") Sí
+                    a.btn.btn-danger.waves-effect(data-dismiss="modal") No
 
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")
