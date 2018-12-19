@@ -5,7 +5,7 @@ var credenciales = {
     user:"root",
     password:"",
     port:"3306",
-    database: "prueba"
+    database: "devcloud"
 };
 
 var conexion = mysql.createConnection(credenciales);

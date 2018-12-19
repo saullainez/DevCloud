@@ -122,6 +122,7 @@ function eliminarProyecto(id) {
         }
     });
 };
+
 $(document).ready(function () {
     $("#sdDash").addClass("active");
     cargarDatosPerfil()
