@@ -8,8 +8,9 @@ function modalEliminarCarpeta(idCarpeta) {
     $("#borrarCarpeta").attr('onClick', `eliminarCarpeta(${idCarpeta})`);
     $("#modalConfirmarBorrado").modal();
 };
-function modalEditarArchivo(idArchivo, nombreArchivo){
+function modalEditarArchivo(idArchivo, nombreArchivo, tipoArchivo){
     $("#nuevoNombreArchivo").val(nombreArchivo);
+    $("#tipoArchivo2").val(tipoArchivo);
     $("#actualizarArchivo").attr('onclick', `actualizarArchivo(${idArchivo})`);
     $("#editarArchivo").modal();
 }
@@ -202,20 +203,24 @@ function eliminarArchivo(id) {
 $(document).ready(function () {
     cargarCarpetas();
     cargarArchivos();
-
     var myCode;
     var editor = ace.edit("editor");
     $("#editor").show();
     var editor1 = ace.edit("editor1");
     $("#editor1").show();
 
-    // var seleccionado=$("#sel-lan").val();
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet");
 
-    editor.setTheme("ace/theme/TextMate");
-    editor.session.setMode("ace/mode/html");
-    //editor.getSession().setValue("write your code here");
+    editor.setTheme("ace/theme/xcode");
+    $("#tipoArchivo").on('change', function(){
+        editor.session.setMode(`ace/mode/${this.value}`);
+    });
+    $("#tipoArchivo2").on('change', function(){
+        editor1.session.setMode(`ace/mode/${this.value}`);
+    });
+    /*editor.session.setMode("ace/mode/html");
+    editor.session.setMode("ace/mode/javascript");*/
     myCode = editor.getSession().getValue();
     editor.setOption("enableEmmet", true);
     editor.focus();

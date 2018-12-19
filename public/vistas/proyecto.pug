@@ -157,7 +157,7 @@ block contenido
                                 h6(style="text-align:center") Tipo de archivo
                                 select.browser-default.custom-select(id='tipoArchivo')
                                     option(selected value = "php") PHP
-                                    option(value = "js") JavaScript
+                                    option(value = "javascript") JavaScript
                                     option(value = "html") HTML 
                                     option(value = "css") CSS 
                             div.mb-5
@@ -188,6 +188,13 @@ block contenido
                             div.mb-5
                                 label(for="nuevoNombreArchivo" required) Nombre
                                 input.form-control#nuevoNombreArchivo(type="text")
+                            div.mb-5
+                                h6(style="text-align:center") Tipo de archivo
+                                select.browser-default.custom-select(id='tipoArchivo2')
+                                    option(selected value = "php") PHP
+                                    option(value = "javascript") JavaScript
+                                    option(value = "html") HTML 
+                                    option(value = "css") CSS 
                             div.mb-5
                                 label(required) Contenido
                                 div.form-control#editor1
