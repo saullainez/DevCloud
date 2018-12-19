@@ -211,7 +211,25 @@ module.exports = function (app, passport) {
             })
     });
 
-    
+    app.get("/obtenerarchivos", middlewares.isAuthenticated, function (req, res) {
+        bdconexion.query(`select idArchivo, nombreArchivo, tipoArchivo, contenidoArchivo from archivos where idProyecto = ?`,
+            [req.session.idProyecto],
+            function (error, data, fields) {
+                if (error) res.send(error);
+                res.send(data);
+                res.end();
+            })
+    });
+
+    app.post("/creararchivo", function(req, res){
+        bdconexion.query(`insert into archivos (nombreArchivo, tipoArchivo, contenidoArchivo, idCarpeta, idProyecto) values (?,?,?,?,?)`,
+        [req.body.nombreArchivo, req.body.tipoArchivo, req.body.contenidoArchivo, req.body.idCarpeta, req.session.idProyecto],
+        function (error, data, fields) {
+            if (error) res.send(error);
+            res.send(data);
+            res.end();
+        })
+    });
 
 
 }

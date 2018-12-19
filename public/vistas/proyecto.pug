@@ -10,7 +10,7 @@ block links
                 i.fa.fa-user.ml-1
                 span Perfil
         li.nav-item.active
-            a.nav-link.waves-effec(href="/#")
+            a.nav-link.waves-effec(href="/proyecto")
                 i.fa.fa-code.ml-1
                 span Proyecto 
 block sidebar
@@ -62,6 +62,9 @@ block contenido
     div#carpetaEliminada.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Carpeta eliminada correctamente
         button.close(type='button' data-dismiss='alert' aria-label='Close')
             span(aria-hidden='true') &times;
+    div#archivoCreado.alert.alert-success.alert-dismissible.fade.show(style='display:none;' role='alert') Archivo creado correctamente
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+            span(aria-hidden='true') &times;
     div.row.wow.fadeIn
         div.card(style="padding-bottom: 0rem !important; width:100%")
             div.card-body(style="padding-bottom: 0rem !important;")
@@ -73,7 +76,7 @@ block contenido
                     div.lg-3
                         div.list-group.list-group-flush(style="position: relative; top: 0rem; margin-left : 1rem;")
                             h5.list-group-itemlist-group-item-action.waves-effect(style="margin-left: 2rem;") Archivos creados:
-                                span.badge.badge-success.badge-pill.pull-right#archivosCreados 10
+                                span.badge.badge-success.badge-pill.pull-right#archivosCreados
                     div.lg-3
                         div.list-group.list-group-flush(style="margin-left: 13rem;")
                             h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearCarpeta" style="margin-left: 3rem;") 
@@ -82,11 +85,14 @@ block contenido
                                 i.fa.fa-plus-circle(style="color: #053748!important; font-size: 2rem; margin-left: 1rem;")
                     div.lg-3
                         div.list-group.list-group-flush(style="margin-left: -2rem; position:relative; top: -0.2rem;")
-                            h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearCarpeta" style="margin-left: 3rem;") 
+                            h5.list-group-itemlist-group-item-action.waves-effect(data-toggle="modal" data-target="#crearArchivo" style="margin-left: 3rem;") 
                                 //span(style="position: relative; top: -0.3rem;") Nuevo archivo
                                 i.fa.fa-file(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
                                 i.fa.fa-plus-circle(style="color: #00c851!important; font-size: 2rem; margin-left: 1rem;")
-                    hr
+                hr
+                div.row#archivos
+
+                //div#editor 
     div.modal.fade#crearCarpeta(tabindex="-1" role="dialog" aria-labelledby="crearCarpetaLabel" aria-hidden="true")
         div.modal-dialog.modal-notify.modal-info(role="document")
             div.modal-content
@@ -130,6 +136,40 @@ block contenido
                 div.modal-footer.flex-center
                     a.btn.btn-outline-danger#borrarCarpeta(data-dismiss="modal") Sí
                     a.btn.btn-danger.waves-effect(data-dismiss="modal") No
+    div.modal.fade#crearArchivo(tabindex="-1" role="dialog" aria-labelledby="crearArchivoLabel" aria-hidden="true")
+        div.modal-dialog.modal-notify.modal-info(role="document")
+            div.modal-content
+                div.modal-header
+                    p.heading.lead Crear archivo
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span.white-text(aria-hidden="true") &times;
+                div.modal-body
+                    div.text-center
+                        i.fa.fa-plus-circle.fa-4x.mb-3.animated.rotateIn
+                        form(style="height: 48rem;")
+                            div.mb-5
+                                label(for="nombreArchivo" required) Nombre
+                                input.form-control#nombreArchivo(type="text")   
+                            div.mb-5
+                                h6(style="text-align:center") Tipo de archivo
+                                select.browser-default.custom-select(id='tipoArchivo')
+                                    option(selected value = "php") PHP
+                                    option(value = "js") JavaScript
+                                    option(value = "html") HTML 
+                                    option(value = "css") CSS 
+                            div.mb-5
+                                h6(style="text-align:center") Carpeta
+                                select.browser-default.custom-select(id='idCarpeta')
+                                    //option(value="8") Carpeta
+
+                            div.mb-5
+                                label(for="contenidoArchivo" required) Contenido
+                                //textarea.form-control#contenidoArchivo(type="text" rows="20")   
+                                //textarea.form-control#editor(type="text" rows="20")
+                                div.form-control#editor
+                                                                                        
+                div.modal-footer.justify-content-center
+                    button.btn.btn-primary(onclick="crearArchivo()" data-dismiss="modal") Guardar
 
 block scripts   
     script(type="text/javascript" src="js/jquery-3.3.1.min.js")
@@ -137,6 +177,13 @@ block scripts
     script(type="text/javascript" src="js/mdb.min.js")
     script(type="text/javascript" src="js/activar.js")
     script(type="text/javascript" src="js/proyecto.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ext-language_tools.js?fbclid=IwAR38IIPux2nGIn482ToW2sOaQmlJA61JDml0tvVRoqIqts5uVujeG_Ja0Iw")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ext-emmet.js?fbclid=IwAR05tZ0gciBIAimTexiQicpSDtbn6Cpa35zJ7M9vDO_ZEl_63sN0TrnwXK8")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js?fbclid=IwAR0UUKU5bOXZqCKd7xSk146BDUNbeifM3GLcswwXiSbvxFpN0uDJRj6rXEM")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ext-error_marker.js?fbclid=IwAR0xH6LDUt2yW9XBEbyvDH94wu3QLRS4dhbV7MjSV1ZL6wgVatZ00YtdIRo")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/worker-css.js?fbclid=IwAR0WA-WWD8BgRmgNofTM5XjvoDuIXPGzE9WNSrzZsIRwxb5vegtEQpkq02o")
+
+
 
 
                 

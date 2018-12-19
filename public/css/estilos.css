@@ -96,11 +96,15 @@
 }
 
 
-.list-group-item-action:hover {
+#carpetas .list-group-item-action:hover {
     background-color: #fff0 !important;
 }
 
-
+#editor {
+    position: absolute;
+    width: 28rem;
+    height: 400px;
+}
 .titulo-slide{
     font-size: 4.5rem !important;
 }
